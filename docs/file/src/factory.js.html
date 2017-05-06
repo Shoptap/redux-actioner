@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/factory.js | Redux Actioner API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/Shoptap/redux-actioner" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-bindRequestActions">bindRequestActions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-complianceMiddleware">complianceMiddleware</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createActionFactory">createActionFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createActionTypeFactory">createActionTypeFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-failure">failure</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-request">request</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-success">success</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-catchAction">catchAction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-failureObs">failureObs</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapAction">mapAction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ActionType">ActionType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ActionCreator">ActionCreator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ActionFactory">ActionFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ActionSlice">ActionSlice</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://redux.js.org/docs/api/bindActionCreators.html">bindActionCreators</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html">Observable</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/factory.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Default method for preparing payload fields
+ * @method preparePayload
+ * @param  {Object} [value={}] fields to return in payload
+ * @return {Object}            payload fields
+ */
+const preparePayload = (value = {}) =&gt; value;
+
+/**
+ * Names for the subtypes of ActionSlice
+ * @constant
+ * @type {Object}
+ * @default
+ * @enum {String}
+ */
+export const ActionType = {
+  REQUEST: &apos;REQUEST&apos;,
+  SUCCESS: &apos;SUCCESS&apos;,
+  FAILURE: &apos;FAILURE&apos;,
+};
+
+/**
+ * Creates an ActionSlice
+ * @method createActionTypeFactory
+ * @param  {String}       factoryName                             Namespace for a group of actions
+ * @param  {String}       factorySlice                            Namespace for a specific action slice
+ * @param  {Function}     [requestPayloadCreator=preparePayload]  For transforming request payloads
+ * @return {Function}                                             An action creator function
+ */
+export const createActionTypeFactory = (factoryName, factorySlice, actionTypes = ActionType, requestPayloadCreator = preparePayload) =&gt; {
+  const BASE_TYPE = `${factoryName}/${factorySlice}`;
+
+  const namespacedActionTypes = {};
+  Object.keys(actionTypes).forEach(key =&gt; {
+    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[value]}`
+  });
+
+  /**
+   * An object containing base type, subtypes, and a payload creator
+   * @typedef {object} ActionSlice
+   * @property {String}     BASE_TYPE                               Action base type with factory and slice name
+   * @property {...Object}     ...actionTypes                       Type names for each actionType given
+   * @property {Function}   requestPayloadCreator                   For creating payloads of REQUEST actions*
+   * @example
+   * {
+   *  BASE_TYPE: &quot;TODO/ADD&quot;,
+   *  REQUEST: &quot;TODO/ADD/REQUEST&quot;,
+   *  SUCCESS: &quot;TODO/ADD/SUCCESS&quot;,
+   *  FAILURE: &quot;TODO/ADD/FAILURE&quot;
+   *  requestPayloadCreator: ({ text, title, listId: list_id }) =&gt; ({ text, title, list_id})
+   * }
+   */
+  return {
+    BASE_TYPE,
+    REQUEST,
+    SUCCESS,
+    FAILURE,
+    requestPayloadCreator
+  };
+}
+
+/**
+ * Creates an object consumable by Redux
+ * @typedef {function} ActionCreator
+ */
+
+/**
+ * Action creator for REQUEST type actions
+ * @method request
+ * @param  {Object} actionSlice an Action Slice object
+ * @return {Function}        an action creator for a Slice&apos;s REQUEST type
+ * @example
+ * request(TodoActions.ADD)({ text: &quot;Do something great.&quot; })
+ */
+export const request =
+  (actionSlice) =&gt;
+    (...args) =&gt;
+      ({
+        type: actionSlice.REQUEST,
+        baseType: actionSlice.BASE_TYPE,
+        payload: actionSlice.requestPayloadCreator(...args),
+        actionType: ActionType.REQUEST,
+      });
+
+/**
+ * Action creator for SUCCESS type actions
+ * @method success
+ * @param  {Object} actionSlice  an Action Slice object
+ * @param  {Object} context a Context payload object
+ * @return {ActionCreator}         an action creator for a Slices&apos; SUCCESS type
+ * @example
+ * request(TodoActions.ADD, { text: &quot;Do something great.&quot; })({ itemId: 1 })
+ */
+export const success =
+  (actionSlice, context) =&gt;
+    (payload) =&gt; ({
+      type: actionSlice.SUCCESS,
+      baseType: actionSlice.BASE_TYPE,
+      payload: Object.assign({}, context, payload),
+      error: null,
+      actionType: ActionType.SUCCESS,
+    });
+
+/**
+ * Action creator for FAILURE type actions
+ * @method failure
+ * @param  {Object} actionSlice  an Action Slice object
+ * @param  {Object} context a Context payload object
+ * @return {ActionCreator}         an action creator for a Slices&apos; FAILURE type
+ * @example
+ * request(TodoActions.ADD, { text: &quot;Do something great.&quot; })(new Error(&quot;Please add a title...&quot;))
+ */
+export const failure =
+  (actionSlice, context = {}) =&gt;
+    (payload) =&gt; ({
+      type: actionSlice.FAILURE,
+      baseType: actionSlice.BASE_TYPE,
+      payload: context,
+      error: payload,
+      actionType: ActionType.FAILURE,
+    });
+
+/**
+ * Creates an Action Factory
+ * @method createActionFactory
+ * @param  {String}            factoryName Namespace for a group of Action Slices
+ * @return {Function}                   A factory function for creating Action Slices in the same namespace
+ * @example
+ * const createSliceAction = createActionFactory(&apos;TODO&apos;);
+ * export const ADD = createSliceAction(&apos;ADD&apos;, ({ text, title, listId: list_id })
+ *  =&gt; ({ text, title, list_id }));
+ */
+const createActionFactory = (factoryName) =&gt;
+  /**
+   * A function that defines a namespace for creating slices
+   * @typedef {function} ActionFactory
+   * @return {ActionFactory} ActionSlice creator
+   */
+  (factorySlice, requestPayloadCreator = preparePayload, actionTypes = ActionType) =&gt;
+    createActionTypeFactory(factoryName, factorySlice, actionTypes, requestPayloadCreator);
+
+export default createActionFactory;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

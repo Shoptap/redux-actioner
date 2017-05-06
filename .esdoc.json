@@ -1,0 +1,10 @@
+{
+  "title": "Redux Actioner",
+  "source": "./src",
+  "destination": "./docs",
+  "manual": {
+    "overview": ["./readme.md"],
+    "saga": ["./manual/saga.md"],
+    "observable": ["./manual/observable.md"]
+  }
+}

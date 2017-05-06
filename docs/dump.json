@@ -1,0 +1,1439 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/bind.js",
+    "content": "/**\n * A helper for binding request actions to Redux Store.dispatch\n * @external {bindActionCreators} http://redux.js.org/docs/api/bindActionCreators.html\n */\n\nimport { bindActionCreators } from 'redux';\nimport { request } from './factory';\n\n/**\n * Takes an object with keys as function names and values of action factory slices\n * @method bindRequestActions\n * @param  {Object}           actions  to be bound to redux store dispatch\n * @param  {Function}         dispatch via redux\n * @return {Object}                    an object containing action creators of REQUEST type\n * @example\n * const mapDispatchToProps = (dispatch) => {\n *  return {\n *    actions: bindRequestActions({\n *      addTodoItem: TodoActions.ADD\n *    }, dispatch);\n *  };\n * };\n */\nexport default function bindRequestActions(actions, dispatch) {\n  const actionCreators = {};\n\n  Object.keys(actions).forEach(key => {\n    if (typeof actions[key] === 'undefined') {\n      throw new 'Invalid type undefined in action `bindRequestActions`.';\n    }\n\n    actionCreators[key] = request(actions[key]);\n  });\n\n  return bindActionCreators(actionCreators, dispatch);\n}\n",
+    "static": true,
+    "longname": "src/bind.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "bindActionCreators",
+    "externalLink": "http://redux.js.org/docs/api/bindActionCreators.html",
+    "memberof": "src/bind.js",
+    "static": true,
+    "longname": "src/bind.js~bindActionCreators",
+    "access": null,
+    "description": "A helper for binding request actions to Redux Store.dispatch",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 2,
+    "kind": "function",
+    "name": "bindRequestActions",
+    "memberof": "src/bind.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/bind.js~bindRequestActions",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/bind.js",
+    "importStyle": "bindRequestActions",
+    "description": "Takes an object with keys as function names and values of action factory slices",
+    "examples": [
+      "const mapDispatchToProps = (dispatch) => {\n return {\n   actions: bindRequestActions({\n     addTodoItem: TodoActions.ADD\n   }, dispatch);\n };\n};"
+    ],
+    "lineNumber": 24,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "bindRequestActions"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actions",
+        "description": "to be bound to redux store dispatch"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "dispatch",
+        "description": "via redux"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "an object containing action creators of REQUEST type"
+    }
+  },
+  {
+    "__docId__": 3,
+    "kind": "file",
+    "name": "src/compliance.js",
+    "content": "/**\n * Ensures that all payloads in actions are in the form of objects\n * @method complianceMiddleware\n * @param  {Object}             store to apply with middleware\n * @return {Function}                 middleware function\n * @example\n * import { applyMiddleware, createStore } from 'redux';\n * const store = createStore(reducers, initialState, applyMiddleware(complianceMiddleware));\n */\nexport const complianceMiddleware = store => next => action => {\n  if((action.payload || action.actionType) && action.payload instanceof Object === false) {\n    throw new Error(`${action.type} has payload of type ${typeof action.payload} should be Object`);\n  }\n\n  return next(action);\n};\n",
+    "static": true,
+    "longname": "src/compliance.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 4,
+    "kind": "function",
+    "name": "complianceMiddleware",
+    "memberof": "src/compliance.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/compliance.js~complianceMiddleware",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/compliance.js",
+    "importStyle": "{complianceMiddleware}",
+    "description": "Ensures that all payloads in actions are in the form of objects",
+    "examples": [
+      "import { applyMiddleware, createStore } from 'redux';\nconst store = createStore(reducers, initialState, applyMiddleware(complianceMiddleware));"
+    ],
+    "lineNumber": 10,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "complianceMiddleware"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "store",
+        "description": "to apply with middleware"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "middleware function"
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "file",
+    "name": "src/factory.js",
+    "content": "/**\n * Default method for preparing payload fields\n * @method preparePayload\n * @param  {Object} [value={}] fields to return in payload\n * @return {Object}            payload fields\n */\nconst preparePayload = (value = {}) => value;\n\n/**\n * Names for the subtypes of ActionSlice\n * @constant\n * @type {Object}\n * @default\n * @enum {String}\n */\nexport const ActionType = {\n  REQUEST: 'REQUEST',\n  SUCCESS: 'SUCCESS',\n  FAILURE: 'FAILURE',\n};\n\n/**\n * Creates an ActionSlice\n * @method createActionTypeFactory\n * @param  {String}       factoryName                             Namespace for a group of actions\n * @param  {String}       factorySlice                            Namespace for a specific action slice\n * @param  {Function}     [requestPayloadCreator=preparePayload]  For transforming request payloads\n * @return {Function}                                             An action creator function\n */\nexport const createActionTypeFactory = (factoryName, factorySlice, actionTypes = ActionType, requestPayloadCreator = preparePayload) => {\n  const BASE_TYPE = `${factoryName}/${factorySlice}`;\n\n  const namespacedActionTypes = {};\n  Object.keys(actionTypes).forEach(key => {\n    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[value]}`\n  });\n\n  /**\n   * An object containing base type, subtypes, and a payload creator\n   * @typedef {object} ActionSlice\n   * @property {String}     BASE_TYPE                               Action base type with factory and slice name\n   * @property {...Object}     ...actionTypes                       Type names for each actionType given\n   * @property {Function}   requestPayloadCreator                   For creating payloads of REQUEST actions*\n   * @example\n   * {\n   *  BASE_TYPE: \"TODO/ADD\",\n   *  REQUEST: \"TODO/ADD/REQUEST\",\n   *  SUCCESS: \"TODO/ADD/SUCCESS\",\n   *  FAILURE: \"TODO/ADD/FAILURE\"\n   *  requestPayloadCreator: ({ text, title, listId: list_id }) => ({ text, title, list_id})\n   * }\n   */\n  return {\n    BASE_TYPE,\n    REQUEST,\n    SUCCESS,\n    FAILURE,\n    requestPayloadCreator\n  };\n}\n\n/**\n * Creates an object consumable by Redux\n * @typedef {function} ActionCreator\n */\n\n/**\n * Action creator for REQUEST type actions\n * @method request\n * @param  {Object} actionSlice an Action Slice object\n * @return {Function}        an action creator for a Slice's REQUEST type\n * @example\n * request(TodoActions.ADD)({ text: \"Do something great.\" })\n */\nexport const request =\n  (actionSlice) =>\n    (...args) =>\n      ({\n        type: actionSlice.REQUEST,\n        baseType: actionSlice.BASE_TYPE,\n        payload: actionSlice.requestPayloadCreator(...args),\n        actionType: ActionType.REQUEST,\n      });\n\n/**\n * Action creator for SUCCESS type actions\n * @method success\n * @param  {Object} actionSlice  an Action Slice object\n * @param  {Object} context a Context payload object\n * @return {ActionCreator}         an action creator for a Slices' SUCCESS type\n * @example\n * request(TodoActions.ADD, { text: \"Do something great.\" })({ itemId: 1 })\n */\nexport const success =\n  (actionSlice, context) =>\n    (payload) => ({\n      type: actionSlice.SUCCESS,\n      baseType: actionSlice.BASE_TYPE,\n      payload: Object.assign({}, context, payload),\n      error: null,\n      actionType: ActionType.SUCCESS,\n    });\n\n/**\n * Action creator for FAILURE type actions\n * @method failure\n * @param  {Object} actionSlice  an Action Slice object\n * @param  {Object} context a Context payload object\n * @return {ActionCreator}         an action creator for a Slices' FAILURE type\n * @example\n * request(TodoActions.ADD, { text: \"Do something great.\" })(new Error(\"Please add a title...\"))\n */\nexport const failure =\n  (actionSlice, context = {}) =>\n    (payload) => ({\n      type: actionSlice.FAILURE,\n      baseType: actionSlice.BASE_TYPE,\n      payload: context,\n      error: payload,\n      actionType: ActionType.FAILURE,\n    });\n\n/**\n * Creates an Action Factory\n * @method createActionFactory\n * @param  {String}            factoryName Namespace for a group of Action Slices\n * @return {Function}                   A factory function for creating Action Slices in the same namespace\n * @example\n * const createSliceAction = createActionFactory('TODO');\n * export const ADD = createSliceAction('ADD', ({ text, title, listId: list_id })\n *  => ({ text, title, list_id }));\n */\nconst createActionFactory = (factoryName) =>\n  /**\n   * A function that defines a namespace for creating slices\n   * @typedef {function} ActionFactory\n   * @return {ActionFactory} ActionSlice creator\n   */\n  (factorySlice, requestPayloadCreator = preparePayload, actionTypes = ActionType) =>\n    createActionTypeFactory(factoryName, factorySlice, actionTypes, requestPayloadCreator);\n\nexport default createActionFactory;\n",
+    "static": true,
+    "longname": "src/factory.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 6,
+    "kind": "function",
+    "name": "preparePayload",
+    "memberof": "src/factory.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/factory.js~preparePayload",
+    "access": null,
+    "export": false,
+    "importPath": "redux-actioner/src/factory.js",
+    "importStyle": null,
+    "description": "Default method for preparing payload fields",
+    "lineNumber": 7,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "preparePayload"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "{}",
+        "defaultRaw": {},
+        "name": "value",
+        "description": "fields to return in payload"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "payload fields"
+    }
+  },
+  {
+    "__docId__": 7,
+    "kind": "variable",
+    "name": "ActionType",
+    "memberof": "src/factory.js",
+    "static": true,
+    "longname": "src/factory.js~ActionType",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/factory.js",
+    "importStyle": "{ActionType}",
+    "description": "Names for the subtypes of ActionSlice",
+    "lineNumber": 16,
+    "unknown": [
+      {
+        "tagName": "@constant",
+        "tagValue": ""
+      },
+      {
+        "tagName": "@default",
+        "tagValue": ""
+      },
+      {
+        "tagName": "@enum",
+        "tagValue": "{String}"
+      }
+    ],
+    "type": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "function",
+    "name": "createActionTypeFactory",
+    "memberof": "src/factory.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/factory.js~createActionTypeFactory",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/factory.js",
+    "importStyle": "{createActionTypeFactory}",
+    "description": "Creates an ActionSlice",
+    "lineNumber": 30,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "createActionTypeFactory"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "factoryName",
+        "description": "Namespace for a group of actions"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "factorySlice",
+        "description": "Namespace for a specific action slice"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "preparePayload",
+        "defaultRaw": "preparePayload",
+        "name": "requestPayloadCreator",
+        "description": "For transforming request payloads"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "An action creator function"
+    }
+  },
+  {
+    "__docId__": 9,
+    "kind": "typedef",
+    "name": "ActionSlice",
+    "memberof": "src/factory.js",
+    "static": true,
+    "longname": "src/factory.js~ActionSlice",
+    "access": null,
+    "description": "An object containing base type, subtypes, and a payload creator",
+    "examples": [
+      "{\n BASE_TYPE: \"TODO/ADD\",\n REQUEST: \"TODO/ADD/REQUEST\",\n SUCCESS: \"TODO/ADD/SUCCESS\",\n FAILURE: \"TODO/ADD/FAILURE\"\n requestPayloadCreator: ({ text, title, listId: list_id }) => ({ text, title, list_id})\n}"
+    ],
+    "lineNumber": 53,
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "BASE_TYPE",
+        "description": "Action base type with factory and slice name"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "...Object"
+        ],
+        "spread": true,
+        "optional": false,
+        "name": "...actionTypes",
+        "description": "Type names for each actionType given"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Function"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "requestPayloadCreator",
+        "description": "For creating payloads of REQUEST actions*"
+      }
+    ],
+    "type": {
+      "types": [
+        "object"
+      ],
+      "optional": false,
+      "name": "ActionSlice"
+    }
+  },
+  {
+    "__docId__": 10,
+    "kind": "typedef",
+    "name": "ActionCreator",
+    "memberof": "src/factory.js",
+    "static": true,
+    "longname": "src/factory.js~ActionCreator",
+    "access": null,
+    "description": "Creates an object consumable by Redux",
+    "type": {
+      "types": [
+        "function"
+      ],
+      "optional": false,
+      "name": "ActionCreator"
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "function",
+    "name": "request",
+    "memberof": "src/factory.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/factory.js~request",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/factory.js",
+    "importStyle": "{request}",
+    "description": "Action creator for REQUEST type actions",
+    "examples": [
+      "request(TodoActions.ADD)({ text: \"Do something great.\" })"
+    ],
+    "lineNumber": 76,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "request"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actionSlice",
+        "description": "an Action Slice object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "an action creator for a Slice's REQUEST type"
+    }
+  },
+  {
+    "__docId__": 12,
+    "kind": "function",
+    "name": "success",
+    "memberof": "src/factory.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/factory.js~success",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/factory.js",
+    "importStyle": "{success}",
+    "description": "Action creator for SUCCESS type actions",
+    "examples": [
+      "request(TodoActions.ADD, { text: \"Do something great.\" })({ itemId: 1 })"
+    ],
+    "lineNumber": 95,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "success"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actionSlice",
+        "description": "an Action Slice object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": "a Context payload object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "ActionCreator"
+      ],
+      "spread": false,
+      "description": "an action creator for a Slices' SUCCESS type"
+    }
+  },
+  {
+    "__docId__": 13,
+    "kind": "function",
+    "name": "failure",
+    "memberof": "src/factory.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/factory.js~failure",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/factory.js",
+    "importStyle": "{failure}",
+    "description": "Action creator for FAILURE type actions",
+    "examples": [
+      "request(TodoActions.ADD, { text: \"Do something great.\" })(new Error(\"Please add a title...\"))"
+    ],
+    "lineNumber": 114,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "failure"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actionSlice",
+        "description": "an Action Slice object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": "a Context payload object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "ActionCreator"
+      ],
+      "spread": false,
+      "description": "an action creator for a Slices' FAILURE type"
+    }
+  },
+  {
+    "__docId__": 14,
+    "kind": "function",
+    "name": "createActionFactory",
+    "memberof": "src/factory.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/factory.js~createActionFactory",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/factory.js",
+    "importStyle": "createActionFactory",
+    "description": "Creates an Action Factory",
+    "examples": [
+      "const createSliceAction = createActionFactory('TODO');\nexport const ADD = createSliceAction('ADD', ({ text, title, listId: list_id })\n => ({ text, title, list_id }));"
+    ],
+    "lineNumber": 133,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "createActionFactory"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "factoryName",
+        "description": "Namespace for a group of Action Slices"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "A factory function for creating Action Slices in the same namespace"
+    }
+  },
+  {
+    "__docId__": 15,
+    "kind": "typedef",
+    "name": "ActionFactory",
+    "memberof": "src/factory.js",
+    "static": true,
+    "longname": "src/factory.js~ActionFactory",
+    "access": null,
+    "description": "A function that defines a namespace for creating slices",
+    "lineNumber": 139,
+    "return": {
+      "nullable": null,
+      "types": [
+        "ActionFactory"
+      ],
+      "spread": false,
+      "description": "ActionSlice creator"
+    },
+    "type": {
+      "types": [
+        "function"
+      ],
+      "optional": false,
+      "name": "ActionFactory"
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "file",
+    "name": "src/index.js",
+    "content": "/**\n * Redux Actioner\n * @module redux-actioner\n * @copyright Style Hunter LLC.\n * @license GNU GENERAL PUBLIC LICENSE v3\n */\n\nexport * from './bind';\nexport * from './factory';\nexport * from './rxjs';\nexport { complianceMiddleware } from './compliance';\n",
+    "static": true,
+    "longname": "src/index.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 17,
+    "kind": "file",
+    "name": "src/rxjs.js",
+    "content": "/**\n * A RXJS Observable type for Redux Observable\n * @external {Observable} http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html\n */\n\nimport { Observable } from 'rxjs';\nimport { success, failure } from './factory';\n\n/**\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n */\nexport const failureObs =\n  (actionSlice, context) =>\n    (payload) =>\n      Observable.of(failure(actionSlice, context)(payload));\n\n\n/**\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n */\nexport function catchAction(actionSlice, context) {\n  return this.catch(e => failureObs(actionSlice, context)(e));\n}\n\n/**\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n *\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n */\nexport function mapAction(actionSlice, context) {\n  const self = this.map(success(actionSlice, context));\n  return catchAction.apply(self, [actionSlice, context]);\n}\n",
+    "static": true,
+    "longname": "src/rxjs.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "Observable",
+    "externalLink": "http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html",
+    "memberof": "src/rxjs.js",
+    "static": true,
+    "longname": "src/rxjs.js~Observable",
+    "access": null,
+    "description": "A RXJS Observable type for Redux Observable",
+    "lineNumber": 6
+  },
+  {
+    "__docId__": 19,
+    "kind": "function",
+    "name": "failureObs",
+    "memberof": "src/rxjs.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/rxjs.js~failureObs",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/rxjs.js",
+    "importStyle": "{failureObs}",
+    "description": "Appends a catch to a call for handling `failure` action with the error as payload.\nBest used with the this-bind syntax, ie: obs::action(LOAD_TODOS)",
+    "lineNumber": 19,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "mapAction"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actionSlice",
+        "description": "the Action Slice object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": "a Context payload object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": ""
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "function",
+    "name": "catchAction",
+    "memberof": "src/rxjs.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/rxjs.js~catchAction",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/rxjs.js",
+    "importStyle": "{catchAction}",
+    "description": "Appends a catch to a call for handling `failure` action with the error as payload.\nBest used with the this-bind syntax, ie: obs::action(LOAD_TODOS)",
+    "lineNumber": 34,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "mapAction"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actionSlice",
+        "description": "the Action Slice object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": "a Context payload object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": "@this-bind"
+    }
+  },
+  {
+    "__docId__": 21,
+    "kind": "function",
+    "name": "mapAction",
+    "memberof": "src/rxjs.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/rxjs.js~mapAction",
+    "access": null,
+    "export": true,
+    "importPath": "redux-actioner/src/rxjs.js",
+    "importStyle": "{mapAction}",
+    "description": "Wrap data in a this-bound observable to success/failure actions based on observable state\n\nA `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\nBest used with the this-bind syntax, ie: obs::action(LOAD_TODOS)",
+    "lineNumber": 50,
+    "unknown": [
+      {
+        "tagName": "@method",
+        "tagValue": "mapAction"
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "actionSlice",
+        "description": "the Action Slice object"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "context",
+        "description": "a Context payload object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Observable"
+      ],
+      "spread": false,
+      "description": "@this-bind"
+    }
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 49,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 59,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "lineNumber": 193,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "lineNumber": 34,
+    "builtinExternal": true
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "name": "redux-actioner",
+  "version": "1.0.0",
+  "description": "Make Redux actions simple, predictable, and maintainable.",
+  "main": "./dist/index.js",
+  "repository": "git@github.com:Shoptap/redux-actioner.git",
+  "author": "Cole Turner <turner.cole@gmail.com>",
+  "license": "GNU GENERAL PUBLIC LICENSE v3",
+  "devDependencies": {
+    "babel-cli": "6",
+    "babel-preset-es2015": "6"
+  },
+  "scripts": {
+    "build": "babel ./src --presets babel-preset-es2015 --out-dir dist"
+  },
+  "optionalDependencies": {
+    "redux-observable": "^0.14.1"
+  },
+  "dependencies": {
+    "redux": "^3.6.0"
+  },
+  "files": [
+    "dist/",
+    "LICENSE"
+  ]
+}

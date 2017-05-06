@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">Overview</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container manual-root" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/Shoptap/redux-actioner" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual" data-toc-name="overview">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-overview" data-section-count="&#x25A0;&#x25A0;&#x25A0;" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#redux-actioner" data-ice="link">Redux Actioner</a></li>
+<li data-ice="manualNav" class="indent-h1 manual-color manual-color-overview" data-section-count="&#x25A0;&#x25A0;&#x25A0;" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#introduction" data-ice="link">Introduction</a></li>
+<li data-ice="manualNav" class="indent-h1 manual-color manual-color-overview" data-section-count="&#x25A0;&#x25A0;&#x25A0;" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#installation" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#simplicity" data-ice="link">Simplicity</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#maintainability" data-ice="link">Maintainability</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#usage" data-ice="link">Usage</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#define-actions" data-ice="link">Define Actions</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#bind-to-dispatch" data-ice="link">Bind to Dispatch</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#reduce-and-slice" data-ice="link">Reduce and Slice</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#action-context" data-ice="link">Action Context</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#testing" data-ice="link">Testing</a></li>
+<li data-ice="manualNav" class="indent-h1 manual-color manual-color-overview" data-section-count="&#x25A0;&#x25A0;&#x25A0;" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#manual" data-ice="link">Manual</a></li>
+<li data-ice="manualNav" class="indent-h1 manual-color manual-color-overview" data-section-count="&#x25A0;&#x25A0;&#x25A0;" data-link="manual/overview/readme.html"><a href="manual/overview/readme.html#contributors" data-ice="link">Contributors</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-reference" data-section-count="&#x25A0;&#x25A0;&#x25A0;&#x25A0;" data-link="identifiers.html"><a href="identifiers.html" data-ice="link">Reference</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#function" data-ice="link">Function</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#variable" data-ice="link">Variable</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#typedef" data-ice="link">Typedef</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#external" data-ice="link">External</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  <div class="manual-breadcrumb-list">
+    <a href="./manual/./index.html">Manual</a>
+    <span>&#xBB;</span>
+    <span data-ice="title">Overview</span>
+  </div>
+  <div data-ice="content"><h1 id="redux-actioner">Redux Actioner</h1>
+<p>Make Redux actions simple, predictable, and maintainable.</p>
+<h1 id="introduction">Introduction</h1>
+<p>Creating actions should be easy and consistent. Inspired by Flux Standard Actions, this framework facilitates the implementation of Redux actions for the sake of simplicity, testing, and maintainability.</p>
+<h1 id="installation">Installation</h1>
+<pre><code><code class="source-code prettyprint">yarn add redux-actioner</code>
+</code></pre><h2 id="simplicity">Simplicity</h2>
+<p>Manage your actions like reducers. Redux Actioner provides <code>createActionFactory</code> which you can use to namespace your actions and add <strong>Action Slices</strong> that are broken down into three types: <code>REQUEST</code>, <code>SUCCESS</code>, and <code>FAILURE</code>.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">{
+  type: &apos;TODO/ADD/REQUEST&apos;,
+  baseType: &apos;TODO/ADD&apos;,
+  payload: {
+    text: &apos;Do something great.&apos;
+  },
+  actionType: &apos;REQUEST&apos;
+}</code>
+</code></pre>
+<p>Here is our <code>REQUEST</code> action that is namespaced in the <code>TODO</code> factory inside the <code>ADD</code> slice. The <code>basetype</code> property contains the factory namespace and the slice name for the ease of handling in reducers.</p>
+<h2 id="maintainability">Maintainability</h2>
+<p>Redux Actioner abstracts the frustration from creating objects and maintaining an application. Request action creators are reusable and easy to update when your API changes. Components remain pure of API versioning and integration with <a href="https://github.com/redux-saga/redux-saga">Redux Saga</a> and <a href="https://github.com/redux-observable/redux-observable">Redux Observable</a> is seamless.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="define-actions">Define Actions</h3>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import { createActionFactory, request } from &apos;redux-actioner&apos;;
+const createSliceAction = createActionFactory(&apos;TODO&apos;);
+
+export const ADD = createSliceAction(&apos;ADD&apos;, ({ text, title, listId: list_id })
+  =&gt; ({ text, title, list_id }));
+
+/*
+ADD = {
+  baseType: &apos;TODO/ADD&apos;,
+  REQUEST: &apos;TODO/ADD/REQUEST&apos;,
+  SUCCESS: &apos;TODO/ADD/SUCCESS&apos;,
+  FAILURE: &apos;TODO/ADD/FAILURE&apos;,
+  requestPayloadCreator: ({ text, title, listId: list_id })
+    =&gt; ({ text, title, list_id }))
+}
+*/</code>
+</code></pre>
+<p>In the example above we have created a namespace called &quot;TODO&quot; and added an action to it called &quot;ADD.&quot; In the comment we can see the <code>baseType</code> is <code>TODO/ADD</code> which will make it easy to bind and reduce. The payload creator is included for creating request action types which makes for a predictable payload.</p>
+<h3 id="bind-to-dispatch">Bind to Dispatch</h3>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import { connect } from &apos;react-redux&apos;;
+import { bindRequestActions } from &apos;redux-actioner&apos;;
+import * as TodoActions from &apos;../actions&apos;;
+
+class TodoForm extends React.Component {
+  state = { text: &quot;Do something greatest.&quot;, title: &quot;Tomorrow...&quot; }
+
+  onSubmit() {
+    this.props.actions.addTodoItem({
+      listId: this.props.listID,
+      ...this.state.form
+    });
+  }
+
+  render() {
+    &lt;Form onSubmit={() =&gt; this.onSubmit()} /&gt;
+  }
+}
+
+const mapDispatchToProps = (dispatch) =&gt; {
+  return {
+    actions: bindRequestActions({
+      addTodoItem: TodoActions.ADD
+    }, dispatch);
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);</code>
+</code></pre>
+<p>The example above will feel familiar with the only difference being that Actioner does not require action creators in your components. ActionSlice objects are given to <code>bindRequestActions</code> which will return an object of action creators similar to Redux&apos;s <code>bindActionCreators</code>. This keeps components clean of API changes and minimizes redundancies.</p>
+<h3 id="reduce-and-slice">Reduce and Slice</h3>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">import * as TodoActions from &apos;../actions&apos;;
+
+function todoReducer(state = { items: [], isSubmitting: null }, action) {
+  const { baseType } = action;
+
+  switch(baseType) {
+    case TodoActions.ADD.BASE_TYPE:
+      return addSlice(state, action);
+    case TodoActions.REMOVE.BASE_TYPE:
+      return removeSlice(state, action);
+  }
+}
+
+function addSlice(state, action) {
+  const { actionType, payload } = action;
+  switch (actionType ) {
+    case &apos;REQUEST&apos;:
+      return { ...state, isSubmitting: true };
+    case &apos;SUCCESS&apos;:
+      const newTodo = { createdAt: new Date(), ...payload };
+      return { isSubmitting: false, items: state.items.concat(newTodo) };
+    break;
+  }
+}</code>
+</code></pre>
+<p>In the example above you will see our <code>todoReducer</code> which has been abstracted into slices to deal with ActionSlice types. When working with large reducers and many actions it becomes a necessity to break out into slices. The end result is cleaner and easier to manage.</p>
+<h3 id="action-context">Action Context</h3>
+<p>When managing side effects it can be difficult to keep track of data as it flows from action to action. Maintaining context is important to ensure actions that respond to requests can resolve later on when reducing.</p>
+<p>Payload data from a request action can be abstracted and dispatched in success or failure actions by providing <code>context</code> to <code>success(actionSlice, context)</code> or <code>failure(actionSlice, context)</code>:</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const requestAction = request(TodoActions.ADD)({ text: &quot;Do something most great.&quot;});
+const { payload } = requestAction;
+const { text } = payload;
+fetch(apiRequest)
+  .then(response =&gt;
+    const successAction = success(TodoActions.ADD, { text })(response);
+    store.dispatch(successAction);
+  )
+  .catch(error =&gt;
+    const errorAction = failure(TodoActions.ADD, { text })(error);
+    store.dispatch(errorAction);
+  );</code>
+</code></pre>
+<h2 id="testing">Testing</h2>
+<p>By using standardized payload creators, action data becomes more predictable and easier to test.</p>
+<p>The payload to a <code>REQUEST</code> action is reduced through a function to prepare the <code>payload</code> parameters for dispatch. It makes API changes flexible and easy to manage in action creators.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">describe(&quot;TODO/ADD request action&quot;, () =&gt; {
+  const payload = { text: &apos;Do something greater.&apos;, title: &apos;Today...&apos;, listId: 1 };
+
+  it(&quot;converts from camel case to snake case&quot;, () =&gt; {
+    expect(request(TodoActions.ADD)(payload))
+      .toEqual(jasmine.objectContaining({
+        text: payload.text,
+        title: payload.title,
+        list_id: payload.listId
+      }));
+  }
+})</code>
+</code></pre>
+<h1 id="manual">Manual</h1>
+<ul>
+<li><a href="https://Shoptap.github.io/redux-actioner">API Reference</a></li>
+<li><a href="./manual/./manual/saga.md">Integration with Redux Saga</a></li>
+<li><a href="./manual/./manual/observable.md">Integration with Redux Observable</a></li>
+</ul>
+<h1 id="contributors">Contributors</h1>
+<ul>
+<li><a href="https://github.com/salanki">Peter Salanki</a></li>
+<li><a href="https://github.com/colepatrickturner">Cole Turner</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
