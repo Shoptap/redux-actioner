@@ -32,7 +32,7 @@ export const createActionTypeFactory = (factoryName, factorySlice, actionTypes =
 
   const namespacedActionTypes = {};
   Object.keys(actionTypes).forEach(key => {
-    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[value]}`
+    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[key]}`;
   });
 
   /**
@@ -50,14 +50,13 @@ export const createActionTypeFactory = (factoryName, factorySlice, actionTypes =
    *  requestPayloadCreator: ({ text, title, listId: list_id }) => ({ text, title, list_id})
    * }
    */
-  return {
-    BASE_TYPE,
-    REQUEST,
-    SUCCESS,
-    FAILURE,
-    requestPayloadCreator
-  };
-}
+  return Object.assign({},
+    namespacedActionTypes,
+    {
+      BASE_TYPE,
+      requestPayloadCreator
+    });
+};
 
 /**
  * Creates an object consumable by Redux

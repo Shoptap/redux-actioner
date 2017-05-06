@@ -43,7 +43,7 @@ var createActionTypeFactory = exports.createActionTypeFactory = function createA
 
   var namespacedActionTypes = {};
   Object.keys(actionTypes).forEach(function (key) {
-    namespacedActionTypes[key] = BASE_TYPE + '/' + actionTypes[value];
+    namespacedActionTypes[key] = BASE_TYPE + '/' + actionTypes[key];
   });
 
   /**
@@ -61,13 +61,10 @@ var createActionTypeFactory = exports.createActionTypeFactory = function createA
    *  requestPayloadCreator: ({ text, title, listId: list_id }) => ({ text, title, list_id})
    * }
    */
-  return {
+  return Object.assign({}, namespacedActionTypes, {
     BASE_TYPE: BASE_TYPE,
-    REQUEST: REQUEST,
-    SUCCESS: SUCCESS,
-    FAILURE: FAILURE,
     requestPayloadCreator: requestPayloadCreator
-  };
+  });
 };
 
 /**

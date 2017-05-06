@@ -15,7 +15,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
  * import { applyMiddleware, createStore } from 'redux';
  * const store = createStore(reducers, initialState, applyMiddleware(complianceMiddleware));
  */
-var complianceMiddleware = exports.complianceMiddleware = function complianceMiddleware(store) {
+var complianceMiddleware = exports.complianceMiddleware = function complianceMiddleware() {
   return function (next) {
     return function (action) {
       if ((action.payload || action.actionType) && action.payload instanceof Object === false) {
