@@ -6,5 +6,4 @@ deployment:
     tag: /release-.*/
     owner: Shoptap
     commands:
-      - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
       - yarn run build && yarn publish
