@@ -1,0 +1,10 @@
+test:
+ override:
+   - yarn run lint
+deployment:
+  release:
+    tag: /release-.*/
+    owner: Shoptap
+    commands:
+      - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\n$NPM_EMAIL" | npm login
+      - yarn run build && yarn publish
