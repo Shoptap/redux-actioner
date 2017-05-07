@@ -22,7 +22,7 @@ Manage your actions like reducers. Redux Actioner provides `createActionFactory`
   actionType: 'REQUEST'
 }
 ```
-Here is our `REQUEST` action that is namespaced in the `TODO` factory inside the `ADD` slice. The `basetype` property contains the factory namespace and the slice name for the ease of handling in reducers.
+Here is our `REQUEST` action that is namespaced in the `TODO` factory > `ADD` slice. The `baseType` property contains the factory namespace and the slice name for the ease of handling in reducers.
 
 ## Maintainability
 Redux Actioner abstracts the frustration from creating objects and maintaining an application. Request action creators are reusable and easy to update when your API changes. Components remain pure of API versioning and integration with [Redux Saga](https://github.com/redux-saga/redux-saga) and [Redux Observable](https://github.com/redux-observable/redux-observable) is seamless.
@@ -159,8 +159,8 @@ describe("TODO/ADD request action", () => {
 # Manual
 
 - [API Reference](https://Shoptap.github.io/redux-actioner)
-- [Integration with Redux Saga](./manual/saga.md)
-- [Integration with Redux Observable](./manual/observable.md)
+- [Integration with Redux Saga](/manual/saga.md)
+- [Integration with Redux Observable](/manual/observable.md)
 
 # Contributors
 - [Peter Salanki](https://github.com/salanki)
