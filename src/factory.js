@@ -129,7 +129,7 @@ export const failure =
  * export const ADD = createSliceAction('ADD', ({ text, title, listId: list_id })
  *  => ({ text, title, list_id }));
  */
-const createActionFactory = (factoryName) =>
+export const createActionFactory = (factoryName) =>
   /**
    * A function that defines a namespace for creating slices
    * @typedef {function} ActionFactory
@@ -137,5 +137,3 @@ const createActionFactory = (factoryName) =>
    */
   (factorySlice, requestPayloadCreator = preparePayload, actionTypes = ActionType) =>
     createActionTypeFactory(factoryName, factorySlice, actionTypes, requestPayloadCreator);
-
-export default createActionFactory;
