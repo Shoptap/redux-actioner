@@ -62,8 +62,8 @@
  * import { applyMiddleware, createStore } from &apos;redux&apos;;
  * const store = createStore(reducers, initialState, applyMiddleware(complianceMiddleware));
  */
-export const complianceMiddleware = store =&gt; next =&gt; action =&gt; {
-  if((action.payload || action.actionType) &amp;&amp; action.payload instanceof Object === false) {
+export const complianceMiddleware = () =&gt; next =&gt; action =&gt; {
+  if ((action.payload || action.actionType) &amp;&amp; action.payload instanceof Object === false) {
     throw new Error(`${action.type} has payload of type ${typeof action.payload} should be Object`);
   }
 

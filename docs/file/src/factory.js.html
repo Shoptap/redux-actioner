@@ -87,7 +87,7 @@ export const createActionTypeFactory = (factoryName, factorySlice, actionTypes =
 
   const namespacedActionTypes = {};
   Object.keys(actionTypes).forEach(key =&gt; {
-    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[value]}`
+    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[key]}`;
   });
 
   /**
@@ -105,14 +105,13 @@ export const createActionTypeFactory = (factoryName, factorySlice, actionTypes =
    *  requestPayloadCreator: ({ text, title, listId: list_id }) =&gt; ({ text, title, list_id})
    * }
    */
-  return {
-    BASE_TYPE,
-    REQUEST,
-    SUCCESS,
-    FAILURE,
-    requestPayloadCreator
-  };
-}
+  return Object.assign({},
+    namespacedActionTypes,
+    {
+      BASE_TYPE,
+      requestPayloadCreator
+    });
+};
 
 /**
  * Creates an object consumable by Redux
@@ -185,7 +184,7 @@ export const failure =
  * export const ADD = createSliceAction(&apos;ADD&apos;, ({ text, title, listId: list_id })
  *  =&gt; ({ text, title, list_id }));
  */
-const createActionFactory = (factoryName) =&gt;
+export const createActionFactory = (factoryName) =&gt;
   /**
    * A function that defines a namespace for creating slices
    * @typedef {function} ActionFactory
@@ -193,8 +192,6 @@ const createActionFactory = (factoryName) =&gt;
    */
   (factorySlice, requestPayloadCreator = preparePayload, actionTypes = ActionType) =&gt;
     createActionTypeFactory(factoryName, factorySlice, actionTypes, requestPayloadCreator);
-
-export default createActionFactory;
 </code></pre>
 
 </div>

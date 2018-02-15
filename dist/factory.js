@@ -144,7 +144,7 @@ var failure = exports.failure = function failure(actionSlice) {
  * export const ADD = createSliceAction('ADD', ({ text, title, listId: list_id })
  *  => ({ text, title, list_id }));
  */
-var createActionFactory = function createActionFactory(factoryName) {
+var createActionFactory = exports.createActionFactory = function createActionFactory(factoryName) {
   return (
     /**
      * A function that defines a namespace for creating slices
@@ -158,5 +158,3 @@ var createActionFactory = function createActionFactory(factoryName) {
     }
   );
 };
-
-exports.default = createActionFactory;

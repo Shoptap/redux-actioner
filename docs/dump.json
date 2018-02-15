@@ -81,7 +81,7 @@
     "__docId__": 3,
     "kind": "file",
     "name": "src/compliance.js",
-    "content": "/**\n * Ensures that all payloads in actions are in the form of objects\n * @method complianceMiddleware\n * @param  {Object}             store to apply with middleware\n * @return {Function}                 middleware function\n * @example\n * import { applyMiddleware, createStore } from 'redux';\n * const store = createStore(reducers, initialState, applyMiddleware(complianceMiddleware));\n */\nexport const complianceMiddleware = store => next => action => {\n  if((action.payload || action.actionType) && action.payload instanceof Object === false) {\n    throw new Error(`${action.type} has payload of type ${typeof action.payload} should be Object`);\n  }\n\n  return next(action);\n};\n",
+    "content": "/**\n * Ensures that all payloads in actions are in the form of objects\n * @method complianceMiddleware\n * @param  {Object}             store to apply with middleware\n * @return {Function}                 middleware function\n * @example\n * import { applyMiddleware, createStore } from 'redux';\n * const store = createStore(reducers, initialState, applyMiddleware(complianceMiddleware));\n */\nexport const complianceMiddleware = () => next => action => {\n  if ((action.payload || action.actionType) && action.payload instanceof Object === false) {\n    throw new Error(`${action.type} has payload of type ${typeof action.payload} should be Object`);\n  }\n\n  return next(action);\n};\n",
     "static": true,
     "longname": "src/compliance.js",
     "access": null,
@@ -137,7 +137,7 @@
     "__docId__": 5,
     "kind": "file",
     "name": "src/factory.js",
-    "content": "/**\n * Default method for preparing payload fields\n * @method preparePayload\n * @param  {Object} [value={}] fields to return in payload\n * @return {Object}            payload fields\n */\nconst preparePayload = (value = {}) => value;\n\n/**\n * Names for the subtypes of ActionSlice\n * @constant\n * @type {Object}\n * @default\n * @enum {String}\n */\nexport const ActionType = {\n  REQUEST: 'REQUEST',\n  SUCCESS: 'SUCCESS',\n  FAILURE: 'FAILURE',\n};\n\n/**\n * Creates an ActionSlice\n * @method createActionTypeFactory\n * @param  {String}       factoryName                             Namespace for a group of actions\n * @param  {String}       factorySlice                            Namespace for a specific action slice\n * @param  {Function}     [requestPayloadCreator=preparePayload]  For transforming request payloads\n * @return {Function}                                             An action creator function\n */\nexport const createActionTypeFactory = (factoryName, factorySlice, actionTypes = ActionType, requestPayloadCreator = preparePayload) => {\n  const BASE_TYPE = `${factoryName}/${factorySlice}`;\n\n  const namespacedActionTypes = {};\n  Object.keys(actionTypes).forEach(key => {\n    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[value]}`\n  });\n\n  /**\n   * An object containing base type, subtypes, and a payload creator\n   * @typedef {object} ActionSlice\n   * @property {String}     BASE_TYPE                               Action base type with factory and slice name\n   * @property {...Object}     ...actionTypes                       Type names for each actionType given\n   * @property {Function}   requestPayloadCreator                   For creating payloads of REQUEST actions*\n   * @example\n   * {\n   *  BASE_TYPE: \"TODO/ADD\",\n   *  REQUEST: \"TODO/ADD/REQUEST\",\n   *  SUCCESS: \"TODO/ADD/SUCCESS\",\n   *  FAILURE: \"TODO/ADD/FAILURE\"\n   *  requestPayloadCreator: ({ text, title, listId: list_id }) => ({ text, title, list_id})\n   * }\n   */\n  return {\n    BASE_TYPE,\n    REQUEST,\n    SUCCESS,\n    FAILURE,\n    requestPayloadCreator\n  };\n}\n\n/**\n * Creates an object consumable by Redux\n * @typedef {function} ActionCreator\n */\n\n/**\n * Action creator for REQUEST type actions\n * @method request\n * @param  {Object} actionSlice an Action Slice object\n * @return {Function}        an action creator for a Slice's REQUEST type\n * @example\n * request(TodoActions.ADD)({ text: \"Do something great.\" })\n */\nexport const request =\n  (actionSlice) =>\n    (...args) =>\n      ({\n        type: actionSlice.REQUEST,\n        baseType: actionSlice.BASE_TYPE,\n        payload: actionSlice.requestPayloadCreator(...args),\n        actionType: ActionType.REQUEST,\n      });\n\n/**\n * Action creator for SUCCESS type actions\n * @method success\n * @param  {Object} actionSlice  an Action Slice object\n * @param  {Object} context a Context payload object\n * @return {ActionCreator}         an action creator for a Slices' SUCCESS type\n * @example\n * request(TodoActions.ADD, { text: \"Do something great.\" })({ itemId: 1 })\n */\nexport const success =\n  (actionSlice, context) =>\n    (payload) => ({\n      type: actionSlice.SUCCESS,\n      baseType: actionSlice.BASE_TYPE,\n      payload: Object.assign({}, context, payload),\n      error: null,\n      actionType: ActionType.SUCCESS,\n    });\n\n/**\n * Action creator for FAILURE type actions\n * @method failure\n * @param  {Object} actionSlice  an Action Slice object\n * @param  {Object} context a Context payload object\n * @return {ActionCreator}         an action creator for a Slices' FAILURE type\n * @example\n * request(TodoActions.ADD, { text: \"Do something great.\" })(new Error(\"Please add a title...\"))\n */\nexport const failure =\n  (actionSlice, context = {}) =>\n    (payload) => ({\n      type: actionSlice.FAILURE,\n      baseType: actionSlice.BASE_TYPE,\n      payload: context,\n      error: payload,\n      actionType: ActionType.FAILURE,\n    });\n\n/**\n * Creates an Action Factory\n * @method createActionFactory\n * @param  {String}            factoryName Namespace for a group of Action Slices\n * @return {Function}                   A factory function for creating Action Slices in the same namespace\n * @example\n * const createSliceAction = createActionFactory('TODO');\n * export const ADD = createSliceAction('ADD', ({ text, title, listId: list_id })\n *  => ({ text, title, list_id }));\n */\nconst createActionFactory = (factoryName) =>\n  /**\n   * A function that defines a namespace for creating slices\n   * @typedef {function} ActionFactory\n   * @return {ActionFactory} ActionSlice creator\n   */\n  (factorySlice, requestPayloadCreator = preparePayload, actionTypes = ActionType) =>\n    createActionTypeFactory(factoryName, factorySlice, actionTypes, requestPayloadCreator);\n\nexport default createActionFactory;\n",
+    "content": "/**\n * Default method for preparing payload fields\n * @method preparePayload\n * @param  {Object} [value={}] fields to return in payload\n * @return {Object}            payload fields\n */\nconst preparePayload = (value = {}) => value;\n\n/**\n * Names for the subtypes of ActionSlice\n * @constant\n * @type {Object}\n * @default\n * @enum {String}\n */\nexport const ActionType = {\n  REQUEST: 'REQUEST',\n  SUCCESS: 'SUCCESS',\n  FAILURE: 'FAILURE',\n};\n\n/**\n * Creates an ActionSlice\n * @method createActionTypeFactory\n * @param  {String}       factoryName                             Namespace for a group of actions\n * @param  {String}       factorySlice                            Namespace for a specific action slice\n * @param  {Function}     [requestPayloadCreator=preparePayload]  For transforming request payloads\n * @return {Function}                                             An action creator function\n */\nexport const createActionTypeFactory = (factoryName, factorySlice, actionTypes = ActionType, requestPayloadCreator = preparePayload) => {\n  const BASE_TYPE = `${factoryName}/${factorySlice}`;\n\n  const namespacedActionTypes = {};\n  Object.keys(actionTypes).forEach(key => {\n    namespacedActionTypes[key] = `${BASE_TYPE}/${actionTypes[key]}`;\n  });\n\n  /**\n   * An object containing base type, subtypes, and a payload creator\n   * @typedef {object} ActionSlice\n   * @property {String}     BASE_TYPE                               Action base type with factory and slice name\n   * @property {...Object}     ...actionTypes                       Type names for each actionType given\n   * @property {Function}   requestPayloadCreator                   For creating payloads of REQUEST actions*\n   * @example\n   * {\n   *  BASE_TYPE: \"TODO/ADD\",\n   *  REQUEST: \"TODO/ADD/REQUEST\",\n   *  SUCCESS: \"TODO/ADD/SUCCESS\",\n   *  FAILURE: \"TODO/ADD/FAILURE\"\n   *  requestPayloadCreator: ({ text, title, listId: list_id }) => ({ text, title, list_id})\n   * }\n   */\n  return Object.assign({},\n    namespacedActionTypes,\n    {\n      BASE_TYPE,\n      requestPayloadCreator\n    });\n};\n\n/**\n * Creates an object consumable by Redux\n * @typedef {function} ActionCreator\n */\n\n/**\n * Action creator for REQUEST type actions\n * @method request\n * @param  {Object} actionSlice an Action Slice object\n * @return {Function}        an action creator for a Slice's REQUEST type\n * @example\n * request(TodoActions.ADD)({ text: \"Do something great.\" })\n */\nexport const request =\n  (actionSlice) =>\n    (...args) =>\n      ({\n        type: actionSlice.REQUEST,\n        baseType: actionSlice.BASE_TYPE,\n        payload: actionSlice.requestPayloadCreator(...args),\n        actionType: ActionType.REQUEST,\n      });\n\n/**\n * Action creator for SUCCESS type actions\n * @method success\n * @param  {Object} actionSlice  an Action Slice object\n * @param  {Object} context a Context payload object\n * @return {ActionCreator}         an action creator for a Slices' SUCCESS type\n * @example\n * request(TodoActions.ADD, { text: \"Do something great.\" })({ itemId: 1 })\n */\nexport const success =\n  (actionSlice, context) =>\n    (payload) => ({\n      type: actionSlice.SUCCESS,\n      baseType: actionSlice.BASE_TYPE,\n      payload: Object.assign({}, context, payload),\n      error: null,\n      actionType: ActionType.SUCCESS,\n    });\n\n/**\n * Action creator for FAILURE type actions\n * @method failure\n * @param  {Object} actionSlice  an Action Slice object\n * @param  {Object} context a Context payload object\n * @return {ActionCreator}         an action creator for a Slices' FAILURE type\n * @example\n * request(TodoActions.ADD, { text: \"Do something great.\" })(new Error(\"Please add a title...\"))\n */\nexport const failure =\n  (actionSlice, context = {}) =>\n    (payload) => ({\n      type: actionSlice.FAILURE,\n      baseType: actionSlice.BASE_TYPE,\n      payload: context,\n      error: payload,\n      actionType: ActionType.FAILURE,\n    });\n\n/**\n * Creates an Action Factory\n * @method createActionFactory\n * @param  {String}            factoryName Namespace for a group of Action Slices\n * @return {Function}                   A factory function for creating Action Slices in the same namespace\n * @example\n * const createSliceAction = createActionFactory('TODO');\n * export const ADD = createSliceAction('ADD', ({ text, title, listId: list_id })\n *  => ({ text, title, list_id }));\n */\nexport const createActionFactory = (factoryName) =>\n  /**\n   * A function that defines a namespace for creating slices\n   * @typedef {function} ActionFactory\n   * @return {ActionFactory} ActionSlice creator\n   */\n  (factorySlice, requestPayloadCreator = preparePayload, actionTypes = ActionType) =>\n    createActionTypeFactory(factoryName, factorySlice, actionTypes, requestPayloadCreator);\n",
     "static": true,
     "longname": "src/factory.js",
     "access": null,
@@ -375,7 +375,7 @@
     "examples": [
       "request(TodoActions.ADD)({ text: \"Do something great.\" })"
     ],
-    "lineNumber": 76,
+    "lineNumber": 75,
     "unknown": [
       {
         "tagName": "@method",
@@ -420,7 +420,7 @@
     "examples": [
       "request(TodoActions.ADD, { text: \"Do something great.\" })({ itemId: 1 })"
     ],
-    "lineNumber": 95,
+    "lineNumber": 94,
     "unknown": [
       {
         "tagName": "@method",
@@ -475,7 +475,7 @@
     "examples": [
       "request(TodoActions.ADD, { text: \"Do something great.\" })(new Error(\"Please add a title...\"))"
     ],
-    "lineNumber": 114,
+    "lineNumber": 113,
     "unknown": [
       {
         "tagName": "@method",
@@ -525,12 +525,12 @@
     "access": null,
     "export": true,
     "importPath": "redux-actioner/src/factory.js",
-    "importStyle": "createActionFactory",
+    "importStyle": "{createActionFactory}",
     "description": "Creates an Action Factory",
     "examples": [
       "const createSliceAction = createActionFactory('TODO');\nexport const ADD = createSliceAction('ADD', ({ text, title, listId: list_id })\n => ({ text, title, list_id }));"
     ],
-    "lineNumber": 133,
+    "lineNumber": 132,
     "unknown": [
       {
         "tagName": "@method",
@@ -567,7 +567,7 @@
     "longname": "src/factory.js~ActionFactory",
     "access": null,
     "description": "A function that defines a namespace for creating slices",
-    "lineNumber": 139,
+    "lineNumber": 138,
     "return": {
       "nullable": null,
       "types": [
