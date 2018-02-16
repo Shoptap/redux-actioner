@@ -32,6 +32,7 @@ var ActionType = exports.ActionType = {
  * @method createActionTypeFactory
  * @param  {String}       factoryName                             Namespace for a group of actions
  * @param  {String}       factorySlice                            Namespace for a specific action slice
+ * @param  {Object}     [actionTypes=ActionType]                For defining action types
  * @param  {Function}     [requestPayloadCreator=preparePayload]  For transforming request payloads
  * @return {Function}                                             An action creator function
  */

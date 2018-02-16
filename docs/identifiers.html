@@ -128,7 +128,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="function/index.html#static-function-complianceMiddleware">complianceMiddleware</a></span></span><span data-ice="signature">(store: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+          <span data-ice="name"><span><a href="function/index.html#static-function-complianceMiddleware">complianceMiddleware</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
         </p>
       </div>
       <div>
@@ -184,7 +184,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="function/index.html#static-function-createActionTypeFactory">createActionTypeFactory</a></span></span><span data-ice="signature">(factoryName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, factorySlice: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, requestPayloadCreator: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+          <span data-ice="name"><span><a href="function/index.html#static-function-createActionTypeFactory">createActionTypeFactory</a></span></span><span data-ice="signature">(factoryName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, factorySlice: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, actionTypes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, requestPayloadCreator: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
         </p>
       </div>
       <div>
@@ -274,7 +274,8 @@
       <div>
         
         
-        <div data-ice="description"><p>Wrap data in a this-bound observable to success/failure actions based on observable state</p>
+        <div data-ice="description"><p>Wrap data in a this-bound observable to success/failure actions based on observable state
+A <code>catch</code> transformation is run on this observable converting the failed observable to one carrying the <code>failure</code> action with the error as payload.</p>
 </div>
       </div>
     </td>

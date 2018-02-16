@@ -1,6 +1,6 @@
 {
   "name": "redux-actioner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Make Redux actions simple, predictable, and maintainable.",
   "main": "./dist/index.js",
   "repository": "git@github.com:Shoptap/redux-actioner.git",

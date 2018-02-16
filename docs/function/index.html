@@ -126,7 +126,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="function/index.html#static-function-complianceMiddleware">complianceMiddleware</a></span></span><span data-ice="signature">(store: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+          <span data-ice="name"><span><a href="function/index.html#static-function-complianceMiddleware">complianceMiddleware</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
         </p>
       </div>
       <div>
@@ -182,7 +182,7 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="function/index.html#static-function-createActionTypeFactory">createActionTypeFactory</a></span></span><span data-ice="signature">(factoryName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, factorySlice: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, requestPayloadCreator: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+          <span data-ice="name"><span><a href="function/index.html#static-function-createActionTypeFactory">createActionTypeFactory</a></span></span><span data-ice="signature">(factoryName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, factorySlice: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, actionTypes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, requestPayloadCreator: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
         </p>
       </div>
       <div>
@@ -272,7 +272,8 @@
       <div>
         
         
-        <div data-ice="description"><p>Wrap data in a this-bound observable to success/failure actions based on observable state</p>
+        <div data-ice="description"><p>Wrap data in a this-bound observable to success/failure actions based on observable state
+A <code>catch</code> transformation is run on this observable converting the failed observable to one carrying the <code>failure</code> action with the error as payload.</p>
 </div>
       </div>
     </td>
@@ -448,11 +449,11 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rxjs.js.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rxjs.js.html#lineNumber33">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {catchAction} from &apos;<span><a href="file/src/rxjs.js.html#lineNumber34">redux-actioner/src/rxjs.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {catchAction} from &apos;<span><a href="file/src/rxjs.js.html#lineNumber33">redux-actioner/src/rxjs.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Appends a catch to a call for handling <code>failure</code> action with the error as payload.
@@ -494,7 +495,7 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
       <tbody>
         <tr>
           <td class="return-type" data-ice="returnType"><span><a href="http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html">Observable</a></span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>@this-bind</p>
+          <td class="return-desc" data-ice="returnDescription"><p>chain</p>
 </td>
         </tr>
       </tbody>
@@ -526,15 +527,15 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
     
     
     
-    <span data-ice="name">complianceMiddleware</span><span data-ice="signature">(store: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+    <span data-ice="name">complianceMiddleware</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/compliance.js.html#lineNumber10">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/compliance.js.html#lineNumber9">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {complianceMiddleware} from &apos;<span><a href="file/src/compliance.js.html#lineNumber10">redux-actioner/src/compliance.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {complianceMiddleware} from &apos;<span><a href="file/src/compliance.js.html#lineNumber9">redux-actioner/src/compliance.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Ensures that all payloads in actions are in the form of objects</p>
@@ -542,24 +543,7 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
 
   
 
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">store</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"><p>to apply with middleware</p>
-</td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="properties">
 </div>
 
   <div class="return-params" data-ice="returnParams">
@@ -612,11 +596,11 @@ const store = createStore(reducers, initialState, applyMiddleware(complianceMidd
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber132">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber133">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {createActionFactory} from &apos;<span><a href="file/src/factory.js.html#lineNumber132">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {createActionFactory} from &apos;<span><a href="file/src/factory.js.html#lineNumber133">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Creates an Action Factory</p>
@@ -691,15 +675,15 @@ export const ADD = createSliceAction(&apos;ADD&apos;, ({ text, title, listId: li
     
     
     
-    <span data-ice="name">createActionTypeFactory</span><span data-ice="signature">(factoryName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, factorySlice: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, requestPayloadCreator: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+    <span data-ice="name">createActionTypeFactory</span><span data-ice="signature">(factoryName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, factorySlice: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, actionTypes: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, requestPayloadCreator: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {createActionTypeFactory} from &apos;<span><a href="file/src/factory.js.html#lineNumber30">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {createActionTypeFactory} from &apos;<span><a href="file/src/factory.js.html#lineNumber31">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Creates an ActionSlice</p>
@@ -727,6 +711,14 @@ export const ADD = createSliceAction(&apos;ADD&apos;, ({ text, title, listId: li
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>Namespace for a specific action slice</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">actionTypes</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: ActionType</li></ul></td>
+      <td data-ice="description"><p>For defining action types</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
@@ -784,11 +776,11 @@ export const ADD = createSliceAction(&apos;ADD&apos;, ({ text, title, listId: li
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber113">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber114">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {failure} from &apos;<span><a href="file/src/factory.js.html#lineNumber113">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {failure} from &apos;<span><a href="file/src/factory.js.html#lineNumber114">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Action creator for FAILURE type actions</p>
@@ -872,11 +864,11 @@ export const ADD = createSliceAction(&apos;ADD&apos;, ({ text, title, listId: li
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rxjs.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rxjs.js.html#lineNumber18">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {failureObs} from &apos;<span><a href="file/src/rxjs.js.html#lineNumber19">redux-actioner/src/rxjs.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {failureObs} from &apos;<span><a href="file/src/rxjs.js.html#lineNumber18">redux-actioner/src/rxjs.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Appends a catch to a call for handling <code>failure</code> action with the error as payload.
@@ -918,7 +910,8 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
       <tbody>
         <tr>
           <td class="return-type" data-ice="returnType"><span><a href="http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html">Observable</a></span></td>
-          
+          <td class="return-desc" data-ice="returnDescription"><p>chain</p>
+</td>
         </tr>
       </tbody>
     </table>
@@ -953,15 +946,15 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/rxjs.js.html#lineNumber50">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/rxjs.js.html#lineNumber47">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {mapAction} from &apos;<span><a href="file/src/rxjs.js.html#lineNumber50">redux-actioner/src/rxjs.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {mapAction} from &apos;<span><a href="file/src/rxjs.js.html#lineNumber47">redux-actioner/src/rxjs.js</a></span>&apos;</code></pre></div>
   
   
-  <div data-ice="description"><p>Wrap data in a this-bound observable to success/failure actions based on observable state</p>
-<p>A <code>catch</code> transformation is run on this observable converting the failed observable to one carrying the <code>failure</code> action with the error as payload.
+  <div data-ice="description"><p>Wrap data in a this-bound observable to success/failure actions based on observable state
+A <code>catch</code> transformation is run on this observable converting the failed observable to one carrying the <code>failure</code> action with the error as payload.
 Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
 </div>
 
@@ -1000,7 +993,7 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
       <tbody>
         <tr>
           <td class="return-type" data-ice="returnType"><span><a href="http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html">Observable</a></span></td>
-          <td class="return-desc" data-ice="returnDescription"><p>@this-bind</p>
+          <td class="return-desc" data-ice="returnDescription"><p>chain</p>
 </td>
         </tr>
       </tbody>
@@ -1036,11 +1029,11 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber76">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {request} from &apos;<span><a href="file/src/factory.js.html#lineNumber75">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {request} from &apos;<span><a href="file/src/factory.js.html#lineNumber76">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Action creator for REQUEST type actions</p>
@@ -1117,11 +1110,11 @@ Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber94">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/factory.js.html#lineNumber95">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {success} from &apos;<span><a href="file/src/factory.js.html#lineNumber94">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {success} from &apos;<span><a href="file/src/factory.js.html#lineNumber95">redux-actioner/src/factory.js</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Action creator for SUCCESS type actions</p>

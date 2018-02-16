@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 1808,
+  "end": 1817,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 54,
+      "line": 51,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 1808,
+    "end": 1817,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 54,
+        "line": 51,
         "column": 0
       }
     },
@@ -271,16 +271,16 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n ",
+            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n ",
             "start": 229,
-            "end": 552,
+            "end": 555,
             "loc": {
               "start": {
                 "line": 9,
                 "column": 0
               },
               "end": {
-                "line": 17,
+                "line": 16,
                 "column": 3
               }
             }
@@ -289,15 +289,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 553,
-        "end": 684,
+        "start": 556,
+        "end": 687,
         "loc": {
           "start": {
-            "line": 18,
+            "line": 17,
             "column": 0
           },
           "end": {
-            "line": 21,
+            "line": 20,
             "column": 60
           }
         },
@@ -305,44 +305,44 @@
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 560,
-          "end": 684,
+          "start": 563,
+          "end": 687,
           "loc": {
             "start": {
-              "line": 18,
+              "line": 17,
               "column": 7
             },
             "end": {
-              "line": 21,
+              "line": 20,
               "column": 60
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 566,
-              "end": 683,
+              "start": 569,
+              "end": 686,
               "loc": {
                 "start": {
-                  "line": 18,
+                  "line": 17,
                   "column": 13
                 },
                 "end": {
-                  "line": 21,
+                  "line": 20,
                   "column": 59
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 566,
-                "end": 576,
+                "start": 569,
+                "end": 579,
                 "loc": {
                   "start": {
-                    "line": 18,
+                    "line": 17,
                     "column": 13
                   },
                   "end": {
-                    "line": 18,
+                    "line": 17,
                     "column": 23
                   },
                   "identifierName": "failureObs"
@@ -352,29 +352,29 @@
               },
               "init": {
                 "type": "ArrowFunctionExpression",
-                "start": 581,
-                "end": 683,
+                "start": 584,
+                "end": 686,
                 "loc": {
                   "start": {
-                    "line": 19,
+                    "line": 18,
                     "column": 2
                   },
                   "end": {
-                    "line": 21,
+                    "line": 20,
                     "column": 59
                   }
                 },
                 "id": {
                   "type": "Identifier",
-                  "start": 566,
-                  "end": 576,
+                  "start": 569,
+                  "end": 579,
                   "loc": {
                     "start": {
-                      "line": 18,
+                      "line": 17,
                       "column": 13
                     },
                     "end": {
-                      "line": 18,
+                      "line": 17,
                       "column": 23
                     },
                     "identifierName": "failureObs"
@@ -388,15 +388,15 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 582,
-                    "end": 593,
+                    "start": 585,
+                    "end": 596,
                     "loc": {
                       "start": {
-                        "line": 19,
+                        "line": 18,
                         "column": 3
                       },
                       "end": {
-                        "line": 19,
+                        "line": 18,
                         "column": 14
                       },
                       "identifierName": "actionSlice"
@@ -405,15 +405,15 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 595,
-                    "end": 602,
+                    "start": 598,
+                    "end": 605,
                     "loc": {
                       "start": {
-                        "line": 19,
+                        "line": 18,
                         "column": 16
                       },
                       "end": {
-                        "line": 19,
+                        "line": 18,
                         "column": 23
                       },
                       "identifierName": "context"
@@ -423,15 +423,15 @@
                 ],
                 "body": {
                   "type": "ArrowFunctionExpression",
-                  "start": 611,
-                  "end": 683,
+                  "start": 614,
+                  "end": 686,
                   "loc": {
                     "start": {
-                      "line": 20,
+                      "line": 19,
                       "column": 4
                     },
                     "end": {
-                      "line": 21,
+                      "line": 20,
                       "column": 59
                     }
                   },
@@ -442,15 +442,15 @@
                   "params": [
                     {
                       "type": "Identifier",
-                      "start": 612,
-                      "end": 619,
+                      "start": 615,
+                      "end": 622,
                       "loc": {
                         "start": {
-                          "line": 20,
+                          "line": 19,
                           "column": 5
                         },
                         "end": {
-                          "line": 20,
+                          "line": 19,
                           "column": 12
                         },
                         "identifierName": "payload"
@@ -460,43 +460,43 @@
                   ],
                   "body": {
                     "type": "CallExpression",
-                    "start": 630,
-                    "end": 683,
+                    "start": 633,
+                    "end": 686,
                     "loc": {
                       "start": {
-                        "line": 21,
+                        "line": 20,
                         "column": 6
                       },
                       "end": {
-                        "line": 21,
+                        "line": 20,
                         "column": 59
                       }
                     },
                     "callee": {
                       "type": "MemberExpression",
-                      "start": 630,
-                      "end": 643,
+                      "start": 633,
+                      "end": 646,
                       "loc": {
                         "start": {
-                          "line": 21,
+                          "line": 20,
                           "column": 6
                         },
                         "end": {
-                          "line": 21,
+                          "line": 20,
                           "column": 19
                         }
                       },
                       "object": {
                         "type": "Identifier",
-                        "start": 630,
-                        "end": 640,
+                        "start": 633,
+                        "end": 643,
                         "loc": {
                           "start": {
-                            "line": 21,
+                            "line": 20,
                             "column": 6
                           },
                           "end": {
-                            "line": 21,
+                            "line": 20,
                             "column": 16
                           },
                           "identifierName": "Observable"
@@ -505,15 +505,15 @@
                       },
                       "property": {
                         "type": "Identifier",
-                        "start": 641,
-                        "end": 643,
+                        "start": 644,
+                        "end": 646,
                         "loc": {
                           "start": {
-                            "line": 21,
+                            "line": 20,
                             "column": 17
                           },
                           "end": {
-                            "line": 21,
+                            "line": 20,
                             "column": 19
                           },
                           "identifierName": "of"
@@ -525,43 +525,43 @@
                     "arguments": [
                       {
                         "type": "CallExpression",
-                        "start": 644,
-                        "end": 682,
+                        "start": 647,
+                        "end": 685,
                         "loc": {
                           "start": {
-                            "line": 21,
+                            "line": 20,
                             "column": 20
                           },
                           "end": {
-                            "line": 21,
+                            "line": 20,
                             "column": 58
                           }
                         },
                         "callee": {
                           "type": "CallExpression",
-                          "start": 644,
-                          "end": 673,
+                          "start": 647,
+                          "end": 676,
                           "loc": {
                             "start": {
-                              "line": 21,
+                              "line": 20,
                               "column": 20
                             },
                             "end": {
-                              "line": 21,
+                              "line": 20,
                               "column": 49
                             }
                           },
                           "callee": {
                             "type": "Identifier",
-                            "start": 644,
-                            "end": 651,
+                            "start": 647,
+                            "end": 654,
                             "loc": {
                               "start": {
-                                "line": 21,
+                                "line": 20,
                                 "column": 20
                               },
                               "end": {
-                                "line": 21,
+                                "line": 20,
                                 "column": 27
                               },
                               "identifierName": "failure"
@@ -571,15 +571,15 @@
                           "arguments": [
                             {
                               "type": "Identifier",
-                              "start": 652,
-                              "end": 663,
+                              "start": 655,
+                              "end": 666,
                               "loc": {
                                 "start": {
-                                  "line": 21,
+                                  "line": 20,
                                   "column": 28
                                 },
                                 "end": {
-                                  "line": 21,
+                                  "line": 20,
                                   "column": 39
                                 },
                                 "identifierName": "actionSlice"
@@ -588,15 +588,15 @@
                             },
                             {
                               "type": "Identifier",
-                              "start": 665,
-                              "end": 672,
+                              "start": 668,
+                              "end": 675,
                               "loc": {
                                 "start": {
-                                  "line": 21,
+                                  "line": 20,
                                   "column": 41
                                 },
                                 "end": {
-                                  "line": 21,
+                                  "line": 20,
                                   "column": 48
                                 },
                                 "identifierName": "context"
@@ -608,15 +608,15 @@
                         "arguments": [
                           {
                             "type": "Identifier",
-                            "start": 674,
-                            "end": 681,
+                            "start": 677,
+                            "end": 684,
                             "loc": {
                               "start": {
-                                "line": 21,
+                                "line": 20,
                                 "column": 50
                               },
                               "end": {
-                                "line": 21,
+                                "line": 20,
                                 "column": 57
                               },
                               "identifierName": "payload"
@@ -636,16 +636,16 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n ",
+              "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n ",
               "start": 229,
-              "end": 552,
+              "end": 555,
               "loc": {
                 "start": {
                   "line": 9,
                   "column": 0
                 },
                 "end": {
-                  "line": 17,
+                  "line": 16,
                   "column": 3
                 }
               }
@@ -654,16 +654,16 @@
           "trailingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-              "start": 687,
-              "end": 1024,
+              "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+              "start": 690,
+              "end": 1033,
               "loc": {
                 "start": {
-                  "line": 24,
+                  "line": 23,
                   "column": 0
                 },
                 "end": {
-                  "line": 33,
+                  "line": 32,
                   "column": 3
                 }
               }
@@ -673,16 +673,16 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n ",
+            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n ",
             "start": 229,
-            "end": 552,
+            "end": 555,
             "loc": {
               "start": {
                 "line": 9,
                 "column": 0
               },
               "end": {
-                "line": 17,
+                "line": 16,
                 "column": 3
               }
             }
@@ -691,16 +691,16 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-            "start": 687,
-            "end": 1024,
+            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+            "start": 690,
+            "end": 1033,
             "loc": {
               "start": {
-                "line": 24,
+                "line": 23,
                 "column": 0
               },
               "end": {
-                "line": 33,
+                "line": 32,
                 "column": 3
               }
             }
@@ -709,15 +709,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 1025,
-        "end": 1141,
+        "start": 1034,
+        "end": 1150,
         "loc": {
           "start": {
-            "line": 34,
+            "line": 33,
             "column": 0
           },
           "end": {
-            "line": 36,
+            "line": 35,
             "column": 1
           }
         },
@@ -725,29 +725,29 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 1032,
-          "end": 1141,
+          "start": 1041,
+          "end": 1150,
           "loc": {
             "start": {
-              "line": 34,
+              "line": 33,
               "column": 7
             },
             "end": {
-              "line": 36,
+              "line": 35,
               "column": 1
             }
           },
           "id": {
             "type": "Identifier",
-            "start": 1041,
-            "end": 1052,
+            "start": 1050,
+            "end": 1061,
             "loc": {
               "start": {
-                "line": 34,
+                "line": 33,
                 "column": 16
               },
               "end": {
-                "line": 34,
+                "line": 33,
                 "column": 27
               },
               "identifierName": "catchAction"
@@ -761,15 +761,15 @@
           "params": [
             {
               "type": "Identifier",
-              "start": 1053,
-              "end": 1064,
+              "start": 1062,
+              "end": 1073,
               "loc": {
                 "start": {
-                  "line": 34,
+                  "line": 33,
                   "column": 28
                 },
                 "end": {
-                  "line": 34,
+                  "line": 33,
                   "column": 39
                 },
                 "identifierName": "actionSlice"
@@ -778,15 +778,15 @@
             },
             {
               "type": "Identifier",
-              "start": 1066,
-              "end": 1073,
+              "start": 1075,
+              "end": 1082,
               "loc": {
                 "start": {
-                  "line": 34,
+                  "line": 33,
                   "column": 41
                 },
                 "end": {
-                  "line": 34,
+                  "line": 33,
                   "column": 48
                 },
                 "identifierName": "context"
@@ -796,87 +796,87 @@
           ],
           "body": {
             "type": "BlockStatement",
-            "start": 1075,
-            "end": 1141,
+            "start": 1084,
+            "end": 1150,
             "loc": {
               "start": {
-                "line": 34,
+                "line": 33,
                 "column": 50
               },
               "end": {
-                "line": 36,
+                "line": 35,
                 "column": 1
               }
             },
             "body": [
               {
                 "type": "ReturnStatement",
-                "start": 1079,
-                "end": 1139,
+                "start": 1088,
+                "end": 1148,
                 "loc": {
                   "start": {
-                    "line": 35,
+                    "line": 34,
                     "column": 2
                   },
                   "end": {
-                    "line": 35,
+                    "line": 34,
                     "column": 62
                   }
                 },
                 "argument": {
                   "type": "CallExpression",
-                  "start": 1086,
-                  "end": 1138,
+                  "start": 1095,
+                  "end": 1147,
                   "loc": {
                     "start": {
-                      "line": 35,
+                      "line": 34,
                       "column": 9
                     },
                     "end": {
-                      "line": 35,
+                      "line": 34,
                       "column": 61
                     }
                   },
                   "callee": {
                     "type": "MemberExpression",
-                    "start": 1086,
-                    "end": 1096,
+                    "start": 1095,
+                    "end": 1105,
                     "loc": {
                       "start": {
-                        "line": 35,
+                        "line": 34,
                         "column": 9
                       },
                       "end": {
-                        "line": 35,
+                        "line": 34,
                         "column": 19
                       }
                     },
                     "object": {
                       "type": "ThisExpression",
-                      "start": 1086,
-                      "end": 1090,
+                      "start": 1095,
+                      "end": 1099,
                       "loc": {
                         "start": {
-                          "line": 35,
+                          "line": 34,
                           "column": 9
                         },
                         "end": {
-                          "line": 35,
+                          "line": 34,
                           "column": 13
                         }
                       }
                     },
                     "property": {
                       "type": "Identifier",
-                      "start": 1091,
-                      "end": 1096,
+                      "start": 1100,
+                      "end": 1105,
                       "loc": {
                         "start": {
-                          "line": 35,
+                          "line": 34,
                           "column": 14
                         },
                         "end": {
-                          "line": 35,
+                          "line": 34,
                           "column": 19
                         },
                         "identifierName": "catch"
@@ -888,15 +888,15 @@
                   "arguments": [
                     {
                       "type": "ArrowFunctionExpression",
-                      "start": 1097,
-                      "end": 1137,
+                      "start": 1106,
+                      "end": 1146,
                       "loc": {
                         "start": {
-                          "line": 35,
+                          "line": 34,
                           "column": 20
                         },
                         "end": {
-                          "line": 35,
+                          "line": 34,
                           "column": 60
                         }
                       },
@@ -907,15 +907,15 @@
                       "params": [
                         {
                           "type": "Identifier",
-                          "start": 1097,
-                          "end": 1098,
+                          "start": 1106,
+                          "end": 1107,
                           "loc": {
                             "start": {
-                              "line": 35,
+                              "line": 34,
                               "column": 20
                             },
                             "end": {
-                              "line": 35,
+                              "line": 34,
                               "column": 21
                             },
                             "identifierName": "e"
@@ -925,43 +925,43 @@
                       ],
                       "body": {
                         "type": "CallExpression",
-                        "start": 1102,
-                        "end": 1137,
+                        "start": 1111,
+                        "end": 1146,
                         "loc": {
                           "start": {
-                            "line": 35,
+                            "line": 34,
                             "column": 25
                           },
                           "end": {
-                            "line": 35,
+                            "line": 34,
                             "column": 60
                           }
                         },
                         "callee": {
                           "type": "CallExpression",
-                          "start": 1102,
-                          "end": 1134,
+                          "start": 1111,
+                          "end": 1143,
                           "loc": {
                             "start": {
-                              "line": 35,
+                              "line": 34,
                               "column": 25
                             },
                             "end": {
-                              "line": 35,
+                              "line": 34,
                               "column": 57
                             }
                           },
                           "callee": {
                             "type": "Identifier",
-                            "start": 1102,
-                            "end": 1112,
+                            "start": 1111,
+                            "end": 1121,
                             "loc": {
                               "start": {
-                                "line": 35,
+                                "line": 34,
                                 "column": 25
                               },
                               "end": {
-                                "line": 35,
+                                "line": 34,
                                 "column": 35
                               },
                               "identifierName": "failureObs"
@@ -971,15 +971,15 @@
                           "arguments": [
                             {
                               "type": "Identifier",
-                              "start": 1113,
-                              "end": 1124,
+                              "start": 1122,
+                              "end": 1133,
                               "loc": {
                                 "start": {
-                                  "line": 35,
+                                  "line": 34,
                                   "column": 36
                                 },
                                 "end": {
-                                  "line": 35,
+                                  "line": 34,
                                   "column": 47
                                 },
                                 "identifierName": "actionSlice"
@@ -988,15 +988,15 @@
                             },
                             {
                               "type": "Identifier",
-                              "start": 1126,
-                              "end": 1133,
+                              "start": 1135,
+                              "end": 1142,
                               "loc": {
                                 "start": {
-                                  "line": 35,
+                                  "line": 34,
                                   "column": 49
                                 },
                                 "end": {
-                                  "line": 35,
+                                  "line": 34,
                                   "column": 56
                                 },
                                 "identifierName": "context"
@@ -1008,15 +1008,15 @@
                         "arguments": [
                           {
                             "type": "Identifier",
-                            "start": 1135,
-                            "end": 1136,
+                            "start": 1144,
+                            "end": 1145,
                             "loc": {
                               "start": {
-                                "line": 35,
+                                "line": 34,
                                 "column": 58
                               },
                               "end": {
-                                "line": 35,
+                                "line": 34,
                                 "column": 59
                               },
                               "identifierName": "e"
@@ -1036,16 +1036,16 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-              "start": 687,
-              "end": 1024,
+              "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+              "start": 690,
+              "end": 1033,
               "loc": {
                 "start": {
-                  "line": 24,
+                  "line": 23,
                   "column": 0
                 },
                 "end": {
-                  "line": 33,
+                  "line": 32,
                   "column": 3
                 }
               }
@@ -1054,16 +1054,16 @@
           "trailingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n *\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-              "start": 1143,
-              "end": 1641,
+              "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+              "start": 1152,
+              "end": 1650,
               "loc": {
                 "start": {
-                  "line": 38,
+                  "line": 37,
                   "column": 0
                 },
                 "end": {
-                  "line": 49,
+                  "line": 46,
                   "column": 3
                 }
               }
@@ -1073,16 +1073,16 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-            "start": 687,
-            "end": 1024,
+            "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+            "start": 690,
+            "end": 1033,
             "loc": {
               "start": {
-                "line": 24,
+                "line": 23,
                 "column": 0
               },
               "end": {
-                "line": 33,
+                "line": 32,
                 "column": 3
               }
             }
@@ -1091,16 +1091,16 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n *\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-            "start": 1143,
-            "end": 1641,
+            "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+            "start": 1152,
+            "end": 1650,
             "loc": {
               "start": {
-                "line": 38,
+                "line": 37,
                 "column": 0
               },
               "end": {
-                "line": 49,
+                "line": 46,
                 "column": 3
               }
             }
@@ -1109,15 +1109,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 1642,
-        "end": 1807,
+        "start": 1651,
+        "end": 1816,
         "loc": {
           "start": {
-            "line": 50,
+            "line": 47,
             "column": 0
           },
           "end": {
-            "line": 53,
+            "line": 50,
             "column": 1
           }
         },
@@ -1125,29 +1125,29 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 1649,
-          "end": 1807,
+          "start": 1658,
+          "end": 1816,
           "loc": {
             "start": {
-              "line": 50,
+              "line": 47,
               "column": 7
             },
             "end": {
-              "line": 53,
+              "line": 50,
               "column": 1
             }
           },
           "id": {
             "type": "Identifier",
-            "start": 1658,
-            "end": 1667,
+            "start": 1667,
+            "end": 1676,
             "loc": {
               "start": {
-                "line": 50,
+                "line": 47,
                 "column": 16
               },
               "end": {
-                "line": 50,
+                "line": 47,
                 "column": 25
               },
               "identifierName": "mapAction"
@@ -1161,15 +1161,15 @@
           "params": [
             {
               "type": "Identifier",
-              "start": 1668,
-              "end": 1679,
+              "start": 1677,
+              "end": 1688,
               "loc": {
                 "start": {
-                  "line": 50,
+                  "line": 47,
                   "column": 26
                 },
                 "end": {
-                  "line": 50,
+                  "line": 47,
                   "column": 37
                 },
                 "identifierName": "actionSlice"
@@ -1178,15 +1178,15 @@
             },
             {
               "type": "Identifier",
-              "start": 1681,
-              "end": 1688,
+              "start": 1690,
+              "end": 1697,
               "loc": {
                 "start": {
-                  "line": 50,
+                  "line": 47,
                   "column": 39
                 },
                 "end": {
-                  "line": 50,
+                  "line": 47,
                   "column": 46
                 },
                 "identifierName": "context"
@@ -1196,59 +1196,59 @@
           ],
           "body": {
             "type": "BlockStatement",
-            "start": 1690,
-            "end": 1807,
+            "start": 1699,
+            "end": 1816,
             "loc": {
               "start": {
-                "line": 50,
+                "line": 47,
                 "column": 48
               },
               "end": {
-                "line": 53,
+                "line": 50,
                 "column": 1
               }
             },
             "body": [
               {
                 "type": "VariableDeclaration",
-                "start": 1694,
-                "end": 1747,
+                "start": 1703,
+                "end": 1756,
                 "loc": {
                   "start": {
-                    "line": 51,
+                    "line": 48,
                     "column": 2
                   },
                   "end": {
-                    "line": 51,
+                    "line": 48,
                     "column": 55
                   }
                 },
                 "declarations": [
                   {
                     "type": "VariableDeclarator",
-                    "start": 1700,
-                    "end": 1746,
+                    "start": 1709,
+                    "end": 1755,
                     "loc": {
                       "start": {
-                        "line": 51,
+                        "line": 48,
                         "column": 8
                       },
                       "end": {
-                        "line": 51,
+                        "line": 48,
                         "column": 54
                       }
                     },
                     "id": {
                       "type": "Identifier",
-                      "start": 1700,
-                      "end": 1704,
+                      "start": 1709,
+                      "end": 1713,
                       "loc": {
                         "start": {
-                          "line": 51,
+                          "line": 48,
                           "column": 8
                         },
                         "end": {
-                          "line": 51,
+                          "line": 48,
                           "column": 12
                         },
                         "identifierName": "self"
@@ -1257,58 +1257,58 @@
                     },
                     "init": {
                       "type": "CallExpression",
-                      "start": 1707,
-                      "end": 1746,
+                      "start": 1716,
+                      "end": 1755,
                       "loc": {
                         "start": {
-                          "line": 51,
+                          "line": 48,
                           "column": 15
                         },
                         "end": {
-                          "line": 51,
+                          "line": 48,
                           "column": 54
                         }
                       },
                       "callee": {
                         "type": "MemberExpression",
-                        "start": 1707,
-                        "end": 1715,
+                        "start": 1716,
+                        "end": 1724,
                         "loc": {
                           "start": {
-                            "line": 51,
+                            "line": 48,
                             "column": 15
                           },
                           "end": {
-                            "line": 51,
+                            "line": 48,
                             "column": 23
                           }
                         },
                         "object": {
                           "type": "ThisExpression",
-                          "start": 1707,
-                          "end": 1711,
+                          "start": 1716,
+                          "end": 1720,
                           "loc": {
                             "start": {
-                              "line": 51,
+                              "line": 48,
                               "column": 15
                             },
                             "end": {
-                              "line": 51,
+                              "line": 48,
                               "column": 19
                             }
                           }
                         },
                         "property": {
                           "type": "Identifier",
-                          "start": 1712,
-                          "end": 1715,
+                          "start": 1721,
+                          "end": 1724,
                           "loc": {
                             "start": {
-                              "line": 51,
+                              "line": 48,
                               "column": 20
                             },
                             "end": {
-                              "line": 51,
+                              "line": 48,
                               "column": 23
                             },
                             "identifierName": "map"
@@ -1320,29 +1320,29 @@
                       "arguments": [
                         {
                           "type": "CallExpression",
-                          "start": 1716,
-                          "end": 1745,
+                          "start": 1725,
+                          "end": 1754,
                           "loc": {
                             "start": {
-                              "line": 51,
+                              "line": 48,
                               "column": 24
                             },
                             "end": {
-                              "line": 51,
+                              "line": 48,
                               "column": 53
                             }
                           },
                           "callee": {
                             "type": "Identifier",
-                            "start": 1716,
-                            "end": 1723,
+                            "start": 1725,
+                            "end": 1732,
                             "loc": {
                               "start": {
-                                "line": 51,
+                                "line": 48,
                                 "column": 24
                               },
                               "end": {
-                                "line": 51,
+                                "line": 48,
                                 "column": 31
                               },
                               "identifierName": "success"
@@ -1352,15 +1352,15 @@
                           "arguments": [
                             {
                               "type": "Identifier",
-                              "start": 1724,
-                              "end": 1735,
+                              "start": 1733,
+                              "end": 1744,
                               "loc": {
                                 "start": {
-                                  "line": 51,
+                                  "line": 48,
                                   "column": 32
                                 },
                                 "end": {
-                                  "line": 51,
+                                  "line": 48,
                                   "column": 43
                                 },
                                 "identifierName": "actionSlice"
@@ -1369,15 +1369,15 @@
                             },
                             {
                               "type": "Identifier",
-                              "start": 1737,
-                              "end": 1744,
+                              "start": 1746,
+                              "end": 1753,
                               "loc": {
                                 "start": {
-                                  "line": 51,
+                                  "line": 48,
                                   "column": 45
                                 },
                                 "end": {
-                                  "line": 51,
+                                  "line": 48,
                                   "column": 52
                                 },
                                 "identifierName": "context"
@@ -1394,57 +1394,57 @@
               },
               {
                 "type": "ReturnStatement",
-                "start": 1750,
-                "end": 1805,
+                "start": 1759,
+                "end": 1814,
                 "loc": {
                   "start": {
-                    "line": 52,
+                    "line": 49,
                     "column": 2
                   },
                   "end": {
-                    "line": 52,
+                    "line": 49,
                     "column": 57
                   }
                 },
                 "argument": {
                   "type": "CallExpression",
-                  "start": 1757,
-                  "end": 1804,
+                  "start": 1766,
+                  "end": 1813,
                   "loc": {
                     "start": {
-                      "line": 52,
+                      "line": 49,
                       "column": 9
                     },
                     "end": {
-                      "line": 52,
+                      "line": 49,
                       "column": 56
                     }
                   },
                   "callee": {
                     "type": "MemberExpression",
-                    "start": 1757,
-                    "end": 1774,
+                    "start": 1766,
+                    "end": 1783,
                     "loc": {
                       "start": {
-                        "line": 52,
+                        "line": 49,
                         "column": 9
                       },
                       "end": {
-                        "line": 52,
+                        "line": 49,
                         "column": 26
                       }
                     },
                     "object": {
                       "type": "Identifier",
-                      "start": 1757,
-                      "end": 1768,
+                      "start": 1766,
+                      "end": 1777,
                       "loc": {
                         "start": {
-                          "line": 52,
+                          "line": 49,
                           "column": 9
                         },
                         "end": {
-                          "line": 52,
+                          "line": 49,
                           "column": 20
                         },
                         "identifierName": "catchAction"
@@ -1453,15 +1453,15 @@
                     },
                     "property": {
                       "type": "Identifier",
-                      "start": 1769,
-                      "end": 1774,
+                      "start": 1778,
+                      "end": 1783,
                       "loc": {
                         "start": {
-                          "line": 52,
+                          "line": 49,
                           "column": 21
                         },
                         "end": {
-                          "line": 52,
+                          "line": 49,
                           "column": 26
                         },
                         "identifierName": "apply"
@@ -1473,15 +1473,15 @@
                   "arguments": [
                     {
                       "type": "Identifier",
-                      "start": 1775,
-                      "end": 1779,
+                      "start": 1784,
+                      "end": 1788,
                       "loc": {
                         "start": {
-                          "line": 52,
+                          "line": 49,
                           "column": 27
                         },
                         "end": {
-                          "line": 52,
+                          "line": 49,
                           "column": 31
                         },
                         "identifierName": "self"
@@ -1490,30 +1490,30 @@
                     },
                     {
                       "type": "ArrayExpression",
-                      "start": 1781,
-                      "end": 1803,
+                      "start": 1790,
+                      "end": 1812,
                       "loc": {
                         "start": {
-                          "line": 52,
+                          "line": 49,
                           "column": 33
                         },
                         "end": {
-                          "line": 52,
+                          "line": 49,
                           "column": 55
                         }
                       },
                       "elements": [
                         {
                           "type": "Identifier",
-                          "start": 1782,
-                          "end": 1793,
+                          "start": 1791,
+                          "end": 1802,
                           "loc": {
                             "start": {
-                              "line": 52,
+                              "line": 49,
                               "column": 34
                             },
                             "end": {
-                              "line": 52,
+                              "line": 49,
                               "column": 45
                             },
                             "identifierName": "actionSlice"
@@ -1522,15 +1522,15 @@
                         },
                         {
                           "type": "Identifier",
-                          "start": 1795,
-                          "end": 1802,
+                          "start": 1804,
+                          "end": 1811,
                           "loc": {
                             "start": {
-                              "line": 52,
+                              "line": 49,
                               "column": 47
                             },
                             "end": {
-                              "line": 52,
+                              "line": 49,
                               "column": 54
                             },
                             "identifierName": "context"
@@ -1548,16 +1548,16 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n *\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-              "start": 1143,
-              "end": 1641,
+              "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+              "start": 1152,
+              "end": 1650,
               "loc": {
                 "start": {
-                  "line": 38,
+                  "line": 37,
                   "column": 0
                 },
                 "end": {
-                  "line": 49,
+                  "line": 46,
                   "column": 3
                 }
               }
@@ -1568,16 +1568,16 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n *\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-            "start": 1143,
-            "end": 1641,
+            "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+            "start": 1152,
+            "end": 1650,
             "loc": {
               "start": {
-                "line": 38,
+                "line": 37,
                 "column": 0
               },
               "end": {
-                "line": 49,
+                "line": 46,
                 "column": 3
               }
             }
@@ -1606,48 +1606,48 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n ",
+      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n ",
       "start": 229,
-      "end": 552,
+      "end": 555,
       "loc": {
         "start": {
           "line": 9,
           "column": 0
         },
         "end": {
-          "line": 17,
+          "line": 16,
           "column": 3
         }
       }
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-      "start": 687,
-      "end": 1024,
+      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+      "start": 690,
+      "end": 1033,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 23,
           "column": 0
         },
         "end": {
-          "line": 33,
+          "line": 32,
           "column": 3
         }
       }
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n *\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-      "start": 1143,
-      "end": 1641,
+      "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+      "start": 1152,
+      "end": 1650,
       "loc": {
         "start": {
-          "line": 38,
+          "line": 37,
           "column": 0
         },
         "end": {
-          "line": 49,
+          "line": 46,
           "column": 3
         }
       }
@@ -2090,16 +2090,16 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n ",
+      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n ",
       "start": 229,
-      "end": 552,
+      "end": 555,
       "loc": {
         "start": {
           "line": 9,
           "column": 0
         },
         "end": {
-          "line": 17,
+          "line": 16,
           "column": 3
         }
       }
@@ -2119,15 +2119,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 553,
-      "end": 559,
+      "start": 556,
+      "end": 562,
       "loc": {
         "start": {
-          "line": 18,
+          "line": 17,
           "column": 0
         },
         "end": {
-          "line": 18,
+          "line": 17,
           "column": 6
         }
       }
@@ -2147,15 +2147,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 560,
-      "end": 565,
+      "start": 563,
+      "end": 568,
       "loc": {
         "start": {
-          "line": 18,
+          "line": 17,
           "column": 7
         },
         "end": {
-          "line": 18,
+          "line": 17,
           "column": 12
         }
       }
@@ -2173,15 +2173,15 @@
         "binop": null
       },
       "value": "failureObs",
-      "start": 566,
-      "end": 576,
+      "start": 569,
+      "end": 579,
       "loc": {
         "start": {
-          "line": 18,
+          "line": 17,
           "column": 13
         },
         "end": {
-          "line": 18,
+          "line": 17,
           "column": 23
         }
       }
@@ -2200,15 +2200,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 577,
-      "end": 578,
+      "start": 580,
+      "end": 581,
       "loc": {
         "start": {
-          "line": 18,
+          "line": 17,
           "column": 24
         },
         "end": {
-          "line": 18,
+          "line": 17,
           "column": 25
         }
       }
@@ -2225,15 +2225,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 581,
-      "end": 582,
+      "start": 584,
+      "end": 585,
       "loc": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 2
         },
         "end": {
-          "line": 19,
+          "line": 18,
           "column": 3
         }
       }
@@ -2251,15 +2251,15 @@
         "binop": null
       },
       "value": "actionSlice",
-      "start": 582,
-      "end": 593,
+      "start": 585,
+      "end": 596,
       "loc": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 3
         },
         "end": {
-          "line": 19,
+          "line": 18,
           "column": 14
         }
       }
@@ -2277,15 +2277,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 593,
-      "end": 594,
+      "start": 596,
+      "end": 597,
       "loc": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 14
         },
         "end": {
-          "line": 19,
+          "line": 18,
           "column": 15
         }
       }
@@ -2303,15 +2303,15 @@
         "binop": null
       },
       "value": "context",
-      "start": 595,
-      "end": 602,
+      "start": 598,
+      "end": 605,
       "loc": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 16
         },
         "end": {
-          "line": 19,
+          "line": 18,
           "column": 23
         }
       }
@@ -2328,15 +2328,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 602,
-      "end": 603,
+      "start": 605,
+      "end": 606,
       "loc": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 23
         },
         "end": {
-          "line": 19,
+          "line": 18,
           "column": 24
         }
       }
@@ -2354,15 +2354,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 604,
-      "end": 606,
+      "start": 607,
+      "end": 609,
       "loc": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 25
         },
         "end": {
-          "line": 19,
+          "line": 18,
           "column": 27
         }
       }
@@ -2379,15 +2379,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 611,
-      "end": 612,
+      "start": 614,
+      "end": 615,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 19,
           "column": 4
         },
         "end": {
-          "line": 20,
+          "line": 19,
           "column": 5
         }
       }
@@ -2405,15 +2405,15 @@
         "binop": null
       },
       "value": "payload",
-      "start": 612,
-      "end": 619,
+      "start": 615,
+      "end": 622,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 19,
           "column": 5
         },
         "end": {
-          "line": 20,
+          "line": 19,
           "column": 12
         }
       }
@@ -2430,15 +2430,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 619,
-      "end": 620,
+      "start": 622,
+      "end": 623,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 19,
           "column": 12
         },
         "end": {
-          "line": 20,
+          "line": 19,
           "column": 13
         }
       }
@@ -2456,15 +2456,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 621,
-      "end": 623,
+      "start": 624,
+      "end": 626,
       "loc": {
         "start": {
-          "line": 20,
+          "line": 19,
           "column": 14
         },
         "end": {
-          "line": 20,
+          "line": 19,
           "column": 16
         }
       }
@@ -2482,15 +2482,15 @@
         "binop": null
       },
       "value": "Observable",
-      "start": 630,
-      "end": 640,
+      "start": 633,
+      "end": 643,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 6
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 16
         }
       }
@@ -2508,15 +2508,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 640,
-      "end": 641,
+      "start": 643,
+      "end": 644,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 16
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 17
         }
       }
@@ -2534,15 +2534,15 @@
         "binop": null
       },
       "value": "of",
-      "start": 641,
-      "end": 643,
+      "start": 644,
+      "end": 646,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 17
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 19
         }
       }
@@ -2559,15 +2559,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 643,
-      "end": 644,
+      "start": 646,
+      "end": 647,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 19
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 20
         }
       }
@@ -2585,15 +2585,15 @@
         "binop": null
       },
       "value": "failure",
-      "start": 644,
-      "end": 651,
+      "start": 647,
+      "end": 654,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 20
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 27
         }
       }
@@ -2610,15 +2610,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 651,
-      "end": 652,
+      "start": 654,
+      "end": 655,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 27
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 28
         }
       }
@@ -2636,15 +2636,15 @@
         "binop": null
       },
       "value": "actionSlice",
-      "start": 652,
-      "end": 663,
+      "start": 655,
+      "end": 666,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 28
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 39
         }
       }
@@ -2662,15 +2662,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 663,
-      "end": 664,
+      "start": 666,
+      "end": 667,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 39
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 40
         }
       }
@@ -2688,15 +2688,15 @@
         "binop": null
       },
       "value": "context",
-      "start": 665,
-      "end": 672,
+      "start": 668,
+      "end": 675,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 41
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 48
         }
       }
@@ -2713,15 +2713,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 672,
-      "end": 673,
+      "start": 675,
+      "end": 676,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 48
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 49
         }
       }
@@ -2738,15 +2738,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 673,
-      "end": 674,
+      "start": 676,
+      "end": 677,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 49
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 50
         }
       }
@@ -2764,15 +2764,15 @@
         "binop": null
       },
       "value": "payload",
-      "start": 674,
-      "end": 681,
+      "start": 677,
+      "end": 684,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 50
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 57
         }
       }
@@ -2789,15 +2789,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 681,
-      "end": 682,
+      "start": 684,
+      "end": 685,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 57
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 58
         }
       }
@@ -2814,15 +2814,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 682,
-      "end": 683,
+      "start": 685,
+      "end": 686,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 58
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 59
         }
       }
@@ -2840,31 +2840,31 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 683,
-      "end": 684,
+      "start": 686,
+      "end": 687,
       "loc": {
         "start": {
-          "line": 21,
+          "line": 20,
           "column": 59
         },
         "end": {
-          "line": 21,
+          "line": 20,
           "column": 60
         }
       }
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-      "start": 687,
-      "end": 1024,
+      "value": "*\n * Appends a catch to a call for handling `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+      "start": 690,
+      "end": 1033,
       "loc": {
         "start": {
-          "line": 24,
+          "line": 23,
           "column": 0
         },
         "end": {
-          "line": 33,
+          "line": 32,
           "column": 3
         }
       }
@@ -2884,15 +2884,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 1025,
-      "end": 1031,
+      "start": 1034,
+      "end": 1040,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 0
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 6
         }
       }
@@ -2911,15 +2911,15 @@
         "binop": null
       },
       "value": "function",
-      "start": 1032,
-      "end": 1040,
+      "start": 1041,
+      "end": 1049,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 7
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 15
         }
       }
@@ -2937,15 +2937,15 @@
         "binop": null
       },
       "value": "catchAction",
-      "start": 1041,
-      "end": 1052,
+      "start": 1050,
+      "end": 1061,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 16
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 27
         }
       }
@@ -2962,15 +2962,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1052,
-      "end": 1053,
+      "start": 1061,
+      "end": 1062,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 27
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 28
         }
       }
@@ -2988,15 +2988,15 @@
         "binop": null
       },
       "value": "actionSlice",
-      "start": 1053,
-      "end": 1064,
+      "start": 1062,
+      "end": 1073,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 28
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 39
         }
       }
@@ -3014,15 +3014,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1064,
-      "end": 1065,
+      "start": 1073,
+      "end": 1074,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 39
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 40
         }
       }
@@ -3040,15 +3040,15 @@
         "binop": null
       },
       "value": "context",
-      "start": 1066,
-      "end": 1073,
+      "start": 1075,
+      "end": 1082,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 41
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 48
         }
       }
@@ -3065,15 +3065,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1073,
-      "end": 1074,
+      "start": 1082,
+      "end": 1083,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 48
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 49
         }
       }
@@ -3090,15 +3090,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1075,
-      "end": 1076,
+      "start": 1084,
+      "end": 1085,
       "loc": {
         "start": {
-          "line": 34,
+          "line": 33,
           "column": 50
         },
         "end": {
-          "line": 34,
+          "line": 33,
           "column": 51
         }
       }
@@ -3118,15 +3118,15 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 1079,
-      "end": 1085,
+      "start": 1088,
+      "end": 1094,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 2
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 8
         }
       }
@@ -3146,15 +3146,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 1086,
-      "end": 1090,
+      "start": 1095,
+      "end": 1099,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 9
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 13
         }
       }
@@ -3172,15 +3172,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1090,
-      "end": 1091,
+      "start": 1099,
+      "end": 1100,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 13
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 14
         }
       }
@@ -3200,15 +3200,15 @@
         "updateContext": null
       },
       "value": "catch",
-      "start": 1091,
-      "end": 1096,
+      "start": 1100,
+      "end": 1105,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 14
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 19
         }
       }
@@ -3225,15 +3225,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1096,
-      "end": 1097,
+      "start": 1105,
+      "end": 1106,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 19
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 20
         }
       }
@@ -3251,15 +3251,15 @@
         "binop": null
       },
       "value": "e",
-      "start": 1097,
-      "end": 1098,
+      "start": 1106,
+      "end": 1107,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 20
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 21
         }
       }
@@ -3277,15 +3277,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1099,
-      "end": 1101,
+      "start": 1108,
+      "end": 1110,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 22
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 24
         }
       }
@@ -3303,15 +3303,15 @@
         "binop": null
       },
       "value": "failureObs",
-      "start": 1102,
-      "end": 1112,
+      "start": 1111,
+      "end": 1121,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 25
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 35
         }
       }
@@ -3328,15 +3328,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1112,
-      "end": 1113,
+      "start": 1121,
+      "end": 1122,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 35
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 36
         }
       }
@@ -3354,15 +3354,15 @@
         "binop": null
       },
       "value": "actionSlice",
-      "start": 1113,
-      "end": 1124,
+      "start": 1122,
+      "end": 1133,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 36
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 47
         }
       }
@@ -3380,15 +3380,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1124,
-      "end": 1125,
+      "start": 1133,
+      "end": 1134,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 47
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 48
         }
       }
@@ -3406,15 +3406,15 @@
         "binop": null
       },
       "value": "context",
-      "start": 1126,
-      "end": 1133,
+      "start": 1135,
+      "end": 1142,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 49
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 56
         }
       }
@@ -3431,15 +3431,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1133,
-      "end": 1134,
+      "start": 1142,
+      "end": 1143,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 56
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 57
         }
       }
@@ -3456,15 +3456,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1134,
-      "end": 1135,
+      "start": 1143,
+      "end": 1144,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 57
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 58
         }
       }
@@ -3482,15 +3482,15 @@
         "binop": null
       },
       "value": "e",
-      "start": 1135,
-      "end": 1136,
+      "start": 1144,
+      "end": 1145,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 58
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 59
         }
       }
@@ -3507,15 +3507,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1136,
-      "end": 1137,
+      "start": 1145,
+      "end": 1146,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 59
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 60
         }
       }
@@ -3532,15 +3532,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1137,
-      "end": 1138,
+      "start": 1146,
+      "end": 1147,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 60
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 61
         }
       }
@@ -3558,15 +3558,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1138,
-      "end": 1139,
+      "start": 1147,
+      "end": 1148,
       "loc": {
         "start": {
-          "line": 35,
+          "line": 34,
           "column": 61
         },
         "end": {
-          "line": 35,
+          "line": 34,
           "column": 62
         }
       }
@@ -3583,31 +3583,31 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1140,
-      "end": 1141,
+      "start": 1149,
+      "end": 1150,
       "loc": {
         "start": {
-          "line": 36,
+          "line": 35,
           "column": 0
         },
         "end": {
-          "line": 36,
+          "line": 35,
           "column": 1
         }
       }
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n *\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n *\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable}\n * @this-bind\n ",
-      "start": 1143,
-      "end": 1641,
+      "value": "*\n * Wrap data in a this-bound observable to success/failure actions based on observable state\n * A `catch` transformation is run on this observable converting the failed observable to one carrying the `failure` action with the error as payload.\n * Best used with the this-bind syntax, ie: obs::action(LOAD_TODOS)\n * @method mapAction\n * @param  {Object}  actionSlice the Action Slice object\n * @param  {Object}  context    a Context payload object\n * @return {Observable} chain\n * @this bind\n ",
+      "start": 1152,
+      "end": 1650,
       "loc": {
         "start": {
-          "line": 38,
+          "line": 37,
           "column": 0
         },
         "end": {
-          "line": 49,
+          "line": 46,
           "column": 3
         }
       }
@@ -3627,15 +3627,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 1642,
-      "end": 1648,
+      "start": 1651,
+      "end": 1657,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 0
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 6
         }
       }
@@ -3654,15 +3654,15 @@
         "binop": null
       },
       "value": "function",
-      "start": 1649,
-      "end": 1657,
+      "start": 1658,
+      "end": 1666,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 7
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 15
         }
       }
@@ -3680,15 +3680,15 @@
         "binop": null
       },
       "value": "mapAction",
-      "start": 1658,
-      "end": 1667,
+      "start": 1667,
+      "end": 1676,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 16
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 25
         }
       }
@@ -3705,15 +3705,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1667,
-      "end": 1668,
+      "start": 1676,
+      "end": 1677,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 25
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 26
         }
       }
@@ -3731,15 +3731,15 @@
         "binop": null
       },
       "value": "actionSlice",
-      "start": 1668,
-      "end": 1679,
+      "start": 1677,
+      "end": 1688,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 26
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 37
         }
       }
@@ -3757,15 +3757,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1679,
-      "end": 1680,
+      "start": 1688,
+      "end": 1689,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 37
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 38
         }
       }
@@ -3783,15 +3783,15 @@
         "binop": null
       },
       "value": "context",
-      "start": 1681,
-      "end": 1688,
+      "start": 1690,
+      "end": 1697,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 39
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 46
         }
       }
@@ -3808,15 +3808,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1688,
-      "end": 1689,
+      "start": 1697,
+      "end": 1698,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 46
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 47
         }
       }
@@ -3833,15 +3833,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1690,
-      "end": 1691,
+      "start": 1699,
+      "end": 1700,
       "loc": {
         "start": {
-          "line": 50,
+          "line": 47,
           "column": 48
         },
         "end": {
-          "line": 50,
+          "line": 47,
           "column": 49
         }
       }
@@ -3861,15 +3861,15 @@
         "updateContext": null
       },
       "value": "const",
-      "start": 1694,
-      "end": 1699,
+      "start": 1703,
+      "end": 1708,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 2
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 7
         }
       }
@@ -3887,15 +3887,15 @@
         "binop": null
       },
       "value": "self",
-      "start": 1700,
-      "end": 1704,
+      "start": 1709,
+      "end": 1713,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 8
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 12
         }
       }
@@ -3914,15 +3914,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 1705,
-      "end": 1706,
+      "start": 1714,
+      "end": 1715,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 13
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 14
         }
       }
@@ -3942,15 +3942,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 1707,
-      "end": 1711,
+      "start": 1716,
+      "end": 1720,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 15
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 19
         }
       }
@@ -3968,15 +3968,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1711,
-      "end": 1712,
+      "start": 1720,
+      "end": 1721,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 19
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 20
         }
       }
@@ -3994,15 +3994,15 @@
         "binop": null
       },
       "value": "map",
-      "start": 1712,
-      "end": 1715,
+      "start": 1721,
+      "end": 1724,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 20
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 23
         }
       }
@@ -4019,15 +4019,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1715,
-      "end": 1716,
+      "start": 1724,
+      "end": 1725,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 23
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 24
         }
       }
@@ -4045,15 +4045,15 @@
         "binop": null
       },
       "value": "success",
-      "start": 1716,
-      "end": 1723,
+      "start": 1725,
+      "end": 1732,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 24
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 31
         }
       }
@@ -4070,15 +4070,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1723,
-      "end": 1724,
+      "start": 1732,
+      "end": 1733,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 31
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 32
         }
       }
@@ -4096,15 +4096,15 @@
         "binop": null
       },
       "value": "actionSlice",
-      "start": 1724,
-      "end": 1735,
+      "start": 1733,
+      "end": 1744,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 32
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 43
         }
       }
@@ -4122,15 +4122,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1735,
-      "end": 1736,
+      "start": 1744,
+      "end": 1745,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 43
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 44
         }
       }
@@ -4148,15 +4148,15 @@
         "binop": null
       },
       "value": "context",
-      "start": 1737,
-      "end": 1744,
+      "start": 1746,
+      "end": 1753,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 45
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 52
         }
       }
@@ -4173,15 +4173,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1744,
-      "end": 1745,
+      "start": 1753,
+      "end": 1754,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 52
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 53
         }
       }
@@ -4198,15 +4198,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1745,
-      "end": 1746,
+      "start": 1754,
+      "end": 1755,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 53
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 54
         }
       }
@@ -4224,15 +4224,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1746,
-      "end": 1747,
+      "start": 1755,
+      "end": 1756,
       "loc": {
         "start": {
-          "line": 51,
+          "line": 48,
           "column": 54
         },
         "end": {
-          "line": 51,
+          "line": 48,
           "column": 55
         }
       }
@@ -4252,15 +4252,15 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 1750,
-      "end": 1756,
+      "start": 1759,
+      "end": 1765,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 2
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 8
         }
       }
@@ -4278,15 +4278,15 @@
         "binop": null
       },
       "value": "catchAction",
-      "start": 1757,
-      "end": 1768,
+      "start": 1766,
+      "end": 1777,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 9
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 20
         }
       }
@@ -4304,15 +4304,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1768,
-      "end": 1769,
+      "start": 1777,
+      "end": 1778,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 20
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 21
         }
       }
@@ -4330,15 +4330,15 @@
         "binop": null
       },
       "value": "apply",
-      "start": 1769,
-      "end": 1774,
+      "start": 1778,
+      "end": 1783,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 21
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 26
         }
       }
@@ -4355,15 +4355,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1774,
-      "end": 1775,
+      "start": 1783,
+      "end": 1784,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 26
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 27
         }
       }
@@ -4381,15 +4381,15 @@
         "binop": null
       },
       "value": "self",
-      "start": 1775,
-      "end": 1779,
+      "start": 1784,
+      "end": 1788,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 27
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 31
         }
       }
@@ -4407,15 +4407,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1779,
-      "end": 1780,
+      "start": 1788,
+      "end": 1789,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 31
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 32
         }
       }
@@ -4433,15 +4433,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1781,
-      "end": 1782,
+      "start": 1790,
+      "end": 1791,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 33
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 34
         }
       }
@@ -4459,15 +4459,15 @@
         "binop": null
       },
       "value": "actionSlice",
-      "start": 1782,
-      "end": 1793,
+      "start": 1791,
+      "end": 1802,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 34
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 45
         }
       }
@@ -4485,15 +4485,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1793,
-      "end": 1794,
+      "start": 1802,
+      "end": 1803,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 45
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 46
         }
       }
@@ -4511,15 +4511,15 @@
         "binop": null
       },
       "value": "context",
-      "start": 1795,
-      "end": 1802,
+      "start": 1804,
+      "end": 1811,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 47
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 54
         }
       }
@@ -4537,15 +4537,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1802,
-      "end": 1803,
+      "start": 1811,
+      "end": 1812,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 54
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 55
         }
       }
@@ -4562,15 +4562,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1803,
-      "end": 1804,
+      "start": 1812,
+      "end": 1813,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 55
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 56
         }
       }
@@ -4588,15 +4588,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1804,
-      "end": 1805,
+      "start": 1813,
+      "end": 1814,
       "loc": {
         "start": {
-          "line": 52,
+          "line": 49,
           "column": 56
         },
         "end": {
-          "line": 52,
+          "line": 49,
           "column": 57
         }
       }
@@ -4613,15 +4613,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 1806,
-      "end": 1807,
+      "start": 1815,
+      "end": 1816,
       "loc": {
         "start": {
-          "line": 53,
+          "line": 50,
           "column": 0
         },
         "end": {
-          "line": 53,
+          "line": 50,
           "column": 1
         }
       }
@@ -4639,15 +4639,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 1808,
-      "end": 1808,
+      "start": 1817,
+      "end": 1817,
       "loc": {
         "start": {
-          "line": 54,
+          "line": 51,
           "column": 0
         },
         "end": {
-          "line": 54,
+          "line": 51,
           "column": 0
         }
       }

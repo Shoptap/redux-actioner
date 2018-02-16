@@ -9,7 +9,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /**
  * Ensures that all payloads in actions are in the form of objects
  * @method complianceMiddleware
- * @param  {Object}             store to apply with middleware
  * @return {Function}                 middleware function
  * @example
  * import { applyMiddleware, createStore } from 'redux';
